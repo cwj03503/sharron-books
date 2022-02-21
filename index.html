@@ -34,8 +34,13 @@
         <!-- A large search box that allows the user to search for books -->
         <!-- Will link to some catalog page -->
 		<div class = "search box">
-			<input type="text" placeholder="Search...">
-			<input type="button" value="Search" onclick="msg()"> 
+            <form action="search_page.php">
+                <label for "catalog-search">
+                    Search our collection:
+                </label>
+                <input type="search" id="catalog-search" placeholder="Search...">
+                <input type="submit" value="Search">
+            </form>
 		</div>
         
         <!-- Upcoming Events -->
