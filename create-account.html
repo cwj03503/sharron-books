@@ -10,17 +10,19 @@
 <body>
 	
 	<div class="content">
-        <!-- This form will send username and password to login.php -->
-        <form action="login.php">
-            <label for "username"><b>Username</b></label>
+        <h3 class = "heading"> Create Account </h3>
+        <!-- This form will send username and password to CreateAccount.php -->
+        <form action="CreateAccount.php">
+            <label for "username"><b>Please enter a username</b></label>
             <input type="text" name="username" required>
             
-            <label for "password"><b>Password</b></label>
+            <label for "password"><b>Please enter a valid password</b></label>
             <input type="password" name="password" required>
             
-            <button type="submit">Login</button>
+            <label for "password"><b>Confirm password</b></label>
+            <input type="password" name="password" required>
             
-            <a href="placeholder">Forgot Password?</a>
+            <button type="submit">Create Account</button>
         </form>
 	</div>
 	
