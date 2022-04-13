@@ -1,5 +1,17 @@
+<!-- 
+    Author - Carson Jones  Created Apr 13,22
+    Displays the contents of the books table, and handles search form.
+    Reads from Database ONLY. Does not Update, Delete, Create.
+-->
+
+<!--
+    TODO
+    Handle a search form
+    Add ability to filter books list by genre
+    Display some error for no results
+-->
 <?php
-    include_once 'connect.php';
+    include_once 'config.php';
 ?>
 
 <!DOCTYPE html>
@@ -31,18 +43,20 @@
 		</header>
 	</div>
     
-    <!-- The following php exclusivesly READS from the books table in the library database.
-         It does not create, update, or delete entries, only displays information about them.
+    <!-- 
+        The following php exclusivesly READS from the books table in the library database.
+        It does not create, update, or delete entries, only displays information about them.
     -->
     <?php
         # SQL statement
         $sql = "SELECT * FROM books;";
-        $result = mysqli_query($conn, $sql);
+        $result = mysqli_query($db, $sql);
         # check for results
         $resultCheck = mysqli_num_rows($result);
         if ($resultCheck > 0)
         {
             echo "<table class=\"results-table\">";
+            
             # update table headers manually
             echo "<th> Title </th>";
             echo "<th> Author </th>";
@@ -56,25 +70,26 @@
             
             while ($row = mysqli_fetch_assoc($result))
             {
-                # now we can handle each row as an array
+                # Each attribute of the $row array will be processed as a 
+                # row in a table.
                 echo "<tr>";
                 
-                #book title
+                #Book title
                 echo "<td>";
                 echo $row['Title'];
                 echo "</td>";
                 
-                #book author
+                #Book author
                 echo "<td>";
                 echo $row['Author'];
                 echo "</td>";
                 
-                #book Publisher (Fix Issue for no publisher)
+                #Book Publisher (Fix Issue for no publisher)
                 echo "<td>";
                 echo $row['Publisher'];
                 echo "</td>";
                 
-                #book Genre
+                #Book Genre
                 echo "<td>";
                 echo $row['Genre'];
                 echo "</td>";
@@ -84,7 +99,7 @@
                 echo $row['YearPubbed'];
                 echo "</td>";
                 
-                #book desription
+                #Book desription
                 echo "<td>";
                 echo $row['Description'];
                 echo "</td>";
@@ -100,7 +115,8 @@
                     echo "unavailable";
                 }
                 
-                #Link to reservation form
+                #Reservation button
+                #Contains a hidden form that will send info to reserve.php
                 echo "<td>";
                 echo "<form action=\"reserve.php\" method=\"POST\">";
                 echo "<input type=\"hidden\" name=\"bookID\" value=\"" . $row['BookID'] . "\">";
@@ -113,6 +129,7 @@
                 echo "<td>";
                 echo "<img ";
                 echo "src=\"http://localhost/sharron-books/images/covers/" . $row['ImageLocation'] . "\"";
+                # If the image isn't found in images/covers, replace image with none.jpg
                 echo "onerror=\"if (this.src != 'http://localhost/sharron-books/images/covers/none.jpg') this.src = 'http://localhost/sharron-books/images/covers/none.jpg';\" ";
                 echo "alt=\"" . $row['ImageLocation'] . "\"";
                 echo "width=\"100\"";
