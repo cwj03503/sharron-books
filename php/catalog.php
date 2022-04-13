@@ -8,7 +8,8 @@
     TODO
     Handle a search form
     Add ability to filter books list by genre
-    Display some error for no results
+    Fix image display (currently, a book cover will only display properly
+    if it's stored locally.)
 -->
 <?php
     include_once 'config.php';
@@ -141,7 +142,7 @@
         }
         else
         {
-            # no result, display some error.
+            echo "<h3 class = \"heading error\"> No results found for this query. </h3>";
         }
     ?>
     

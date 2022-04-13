@@ -26,7 +26,7 @@
     if ( $count != 0 ) // if count is not 0 there was a book with the ISBN13
     {                
         $error = "Book with matching ISBN exists.";
-        echo <p> $error </p>;
+        echo "<p>" . $error . "</p>";
     } // if
     else // no match found
     {
