@@ -85,7 +85,6 @@
         {
             $search = sanitize_input($_POST["search"]);
             $genreSearch = $_POST["genres"];
-            if 
         }
         else
         {
