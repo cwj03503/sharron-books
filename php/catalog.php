@@ -7,12 +7,12 @@
 <!--
     TODO
     Handle a search form
-    Add ability to filter books list by genre
     Fix image display (currently, a book cover will only display properly
     if it's stored locally.)
 -->
 <?php
     include_once 'config.php';
+    include_once 'sanitize.php';
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +28,11 @@
 	<div class = "hotbar">
 		<p> Sharron Books <p>
 		<a href="login.html"> Login/Register </a>
-		<input type="text" placeholder="Search...">
+        <form action="catalog.php" method="POST">
+            <input type="text" name="search" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
+		
 	</div>
     
     <!-- Header bar at the top of the home page containing a series of links and the logo -->
@@ -49,11 +53,51 @@
         It does not create, update, or delete entries, only displays information about them.
     -->
     <?php
-        # SQL statement
+        # Generate Search bar with genres from database
+        echo "<form class = \"big-searchbar\"";
+        echo "action = \"";
+        echo htmlspecialchars($_SERVER["PHP_SELF"]); // improves reload speed, avoids redirect
+        echo "\" ";
+        echo "method=\"post\">";   
+        echo "<select name=\"genres\" class=\"genres-dropdown\">";
+        echo "<option autofocus value=\"All\">All</option>";
+    
         $sql = "SELECT * FROM books;";
+        $result = mysqli_query($db, $sql);
+        $resultCheck = mysqli_num_rows($result); 
+        if ($resultCheck > 0) // check if there are results from query
+        {
+            while ($genre = mysqli_fetch_column($result,3))
+            {
+                echo "<option value=\"" . $genre . "\">" . $genre . "</option>";
+            }
+        }
+        echo "</select>";
+        echo "<input type=\"text\" name=\"search\" placeholder=\"Search...\">";
+        echo "<button type=\"submit\">Search</button>";
+        echo "</form>";
+    
+        # Process Search Query
+    
+        # Some form data has been inputted
+        $search = $genreSearch = ""; // sets defaults for search variables
+        if ($_SERVER["REQUEST_METHOD"] == "POST")
+        {
+            $search = sanitize_input($_POST["search"]);
+            $genreSearch = $_POST["genres"];
+            if 
+        }
+        else
+        {
+            # No form data has been inputted, process default request
+            $sql = "SELECT * FROM books;";
+        }
+
+        # Populate Table based on query
         $result = mysqli_query($db, $sql);
         # check for results
         $resultCheck = mysqli_num_rows($result);
+    
         if ($resultCheck > 0)
         {
             echo "<table class=\"results-table\">";
@@ -119,7 +163,7 @@
                 #Reservation button
                 #Contains a hidden form that will send info to reserve.php
                 echo "<td>";
-                echo "<form action=\"reserve.php\" method=\"POST\">";
+                echo "<form action=\"reserve.php\" method=\"GET\">";
                 echo "<input type=\"hidden\" name=\"bookID\" value=\"" . $row['BookID'] . "\">";
                 echo "<input type=\"submit\" value=\"reserve\" name=\"submit\">";
                 echo "</form>";
