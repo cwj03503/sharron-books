@@ -6,7 +6,8 @@
 
 <!--
     TODO
-    Handle a search form
+    Fix potential SQL injection site (form handler)
+    Fix issue where form info disappears on search
     Fix image display (currently, a book cover will only display properly
     if it's stored locally.)
 -->
@@ -54,13 +55,14 @@
     -->
     <?php
         # Generate Search bar with genres from database
+    
         echo "<form class = \"big-searchbar\"";
         echo "action = \"";
         echo htmlspecialchars($_SERVER["PHP_SELF"]); // improves reload speed, avoids redirect
         echo "\" ";
         echo "method=\"post\">";   
         echo "<select name=\"genres\" class=\"genres-dropdown\">";
-        echo "<option autofocus value=\"All\">All</option>";
+        echo "<option autofocus selected value=\"All\">All</option>";
     
         $sql = "SELECT * FROM books;";
         $result = mysqli_query($db, $sql);
@@ -79,24 +81,40 @@
     
         # Process Search Query
     
-        # Some form data has been inputted
-        $search = $genreSearch = ""; // sets defaults for search variables
+        # sets defaults for search variables
+        $sql = "SELECT * FROM books";
+        $search = $sqlGenreCondition = $sqlSubstringCondition = ""; 
+        $genreSearch = "All";
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
-            $search = sanitize_input($_POST["search"]);
-            $genreSearch = $_POST["genres"];
+            #check if values are posted
+            if (isset($_POST["genres"]))
+                $genreSearch = $_POST["genres"];
+            if (isset($_POST["search"]))
+                $search = sanitize_input($_POST["search"]);
+            
+            # something has been entered in the search form text box 
+            if ($search != "")
+            {
+                $sqlSubstringCondition = " WHERE Title LIKE '%" . $search . "%'";
+            }
+            
+            # some genre has been selected in the search form
+            if ($genreSearch != "All")
+            {
+                $sqlGenreCondition = " HAVING Genre='" . $genreSearch . "'";
+            }
         }
-        else
-        {
-            # No form data has been inputted, process default request
-            $sql = "SELECT * FROM books;";
-        }
-
+    
+        #construct SQL query based on responses
+    
+        $sql = $sql . $sqlSubstringCondition . $sqlGenreCondition . ";";
+    
         # Populate Table based on query
+    
         $result = mysqli_query($db, $sql);
         # check for results
         $resultCheck = mysqli_num_rows($result);
-    
         if ($resultCheck > 0)
         {
             echo "<table class=\"results-table\">";
