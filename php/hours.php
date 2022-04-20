@@ -13,13 +13,39 @@
 		<a href="login"> Login/Register </a>
 		<input type="text" placeholder="Search...">
 	</div>
+    
+    <!-- Header bar at the top of the home page containing a series of links and the logo -->
+	<div class="home-header"> 
+		<img src="logo" alt="Library Logo">
+		<header>
+            <nav>
+                <a href="../php/catalog.php" class="header-link"> Catalog </a>
+                <a href="about.html" class="header-link"> About </a>
+                <a href="hours.html" class="header-link"> Hours </a>
+                <a href="contact.html" class="header-link"> Contact </a>
+            </nav>
+		</header>
+	</div>
 
 	
 	<div class="content">
         <hr>
-            <p> 
-                <b>Today's Hours:</b> 7:30 AM - 9:00 PM
-            </p>
+            <div class="todays=hours">
+                <?php
+                    #Displays the date and today's hours
+                    echo "<b>" . date("l, m/d/y") . "</b> <br>";
+                    switch (date("l"))
+                    {
+                        case "Sunday": echo "CLOSED"; break;
+                        case "Monday": echo "7:30 AM - 9:00 PM"; break;
+                        case "Tuesday": echo "7:30 AM - 9:00 PM"; break;
+                        case "Wednesday": echo "7:30 AM - 9:00 PM"; break;
+                        case "Thursday": echo "7:30 AM - 9:00 PM"; break;
+                        case "Friday": echo "7:30 AM - 5:00 PM"; break;
+                        case "Saturday": echo "12:00 PM - 9:00 PM"; break;
+                    }
+                ?>
+            </div>
         <hr>
         <h3> Regular Hours:</h3>
         <table>
