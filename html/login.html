@@ -1,8 +1,12 @@
+<!-- 
+    Author - Drew Jenkins  Created Mar 28,22
+    Form to process the user's login and begin their session
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-    <title>Login | Sharron Books</title>
+    <title>About | Sharron Books</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<link rel="stylesheet" href="css">
 </head>
@@ -28,21 +32,18 @@
 	</div>
 	
 	<div class="content">
-        <!-- This form will send username and password to login.php -->
-        <form action="login.php">
-            <label for "username"><b>Username</b></label>
+        <form method="POST" action="../php/login.php">
+            <label><b>Username</b></label>
             <input type="text" name="username" required>
             
-            <label for "password"><b>Password</b></label>
+            <label><b>Password</b></label>
             <input type="password" name="password" required>
             
             <button type="submit">Login</button>
             
-            <a href="placeholder">Forgot Password?</a>
+            <a href="passwordRe.php">Reset Password?</a>
         </form>
-	</div>
-    
-    <a href="create-account.html">I don't have an account.</a>
+	</div> 
 	
 	<div class="main-footer">
 		<p> Sharron Books </p>
