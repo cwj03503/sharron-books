@@ -1,6 +1,6 @@
 <!-- 
     Author - Drew Jenkins  Created Apr 21, 22
-    Split from the login form in html to better encapsulate the code.
+    Admin PHP Login similar to the regular login but specifically for the use of admin privileges
 -->
 <?php
     require("config.php");
@@ -11,7 +11,7 @@
 		$userIn = $_POST['username'];
 		$passIn = $_POST['password']; 
               
-        $sql = $db->prepare("SELECT * FROM Users WHERE Username = ?"); // statement to check username exists
+        $sql = $db->prepare("SELECT * FROM Administrators WHERE Username = ?"); // statement to check username exists
         $sql->bind_param( "s", $userIn ); //binding to prevent sql injection
         $sql->execute();
         if ( $result = $sql->get_result() )
@@ -25,9 +25,9 @@
                 $check = $ver['Password']; // pull password from db
                 if ( password_verify( $passIn, $check ) ) // check for correctness
                 {
-                    $uID = $ver['UserID']; // grab uID from result
-                    $_SESSION['login_user'] = $uID; // set userID for session
-                    $_SESSION['user_type'] = "false"; // set user status
+                    $aID = $ver['UserID']; // grab uID from result
+                    $_SESSION['login_user'] = $aID; // set adminID for session
+                    $_SESSION['user_type'] = "true"; // set admin status
          
                     header("location: welcome.php"); // redirect only temporary
                 } // if

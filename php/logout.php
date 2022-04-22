@@ -6,7 +6,7 @@
     require( 'config.php' );
     session_start(); // open session
    
-    session_unset(); // close
+    session_destroy(); // close
     // setcookie("user", "", time() - 3600 );
     header("location: ../html/Index.html"); // go to index page
 ?>
