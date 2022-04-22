@@ -43,7 +43,7 @@
             <nav>
                 <a href="catalog.php" class="header-link"> Catalog </a>
                 <a href="../html/about.html" class="header-link"> About </a>
-                <a href="../html/hours.html" class="header-link"> Hours </a>
+                <a href="hours.php" class="header-link"> Hours </a>
                 <a href="../html/contact.html" class="header-link"> Contact </a>
             </nav>
 		</header>
