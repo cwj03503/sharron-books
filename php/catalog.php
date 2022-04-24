@@ -177,12 +177,17 @@
                     echo "unavailable";
                 }
                 
-                #Reservation button
+                #Buttons
                 #Contains a hidden form that will send info to reserve.php
                 echo "<td>";
                 echo "<form action=\"reserve.php\" method=\"GET\">";
                 echo "<input type=\"hidden\" name=\"bookID\" value=\"" . $row['BookID'] . "\">";
-                echo "<input type=\"submit\" value=\"reserve\" name=\"submit\">";
+                echo "<input type=\"submit\" value=\"reserve\" name=\"reserve\">";
+                echo "</form>";
+                #Contains a hidden form that will send bookID to details.php
+                echo "<form action=\"details.php\" method=\"GET\">";
+                echo "<input type=\"hidden\" name=\"bookID\" value=\"" . $row['BookID'] . "\">";
+                echo "<input type=\"submit\" value=\"view details\" name=\"details\">";
                 echo "</form>";
 
                 echo "</td>";
@@ -190,9 +195,9 @@
                 #Cover image
                 echo "<td>";
                 echo "<img ";
-                echo "src=\"http://localhost/sharron-books/images/covers/" . $row['ImageLocation'] . "\"";
+                echo "src=\"../images/covers/" . $row['ImageLocation'] . "\"";
                 # If the image isn't found in images/covers, replace image with none.jpg
-                echo "onerror=\"if (this.src != 'http://localhost/sharron-books/images/covers/none.jpg') this.src = 'http://localhost/sharron-books/images/covers/none.jpg';\" ";
+                echo "onerror=\"if (this.src != '../images/covers/none.jpg') this.src = '../images/covers/none.jpg';\" ";
                 echo "alt=\"" . $row['ImageLocation'] . "\"";
                 echo "width=\"100\"";
                 echo "height=\"120\"";
