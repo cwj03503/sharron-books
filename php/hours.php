@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
     <title>Hours | Sharron Books</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<link rel="stylesheet" href="css">
+	<link rel="stylesheet" href="../html/main.css">
 </head>
 <script src=""></script>
 <body>
@@ -19,9 +19,9 @@
 		<img src="logo" alt="Library Logo">
 		<header>
             <nav>
-                <a href="catalog.php" class="header-link"> Catalog </a>
-                <a href="../html/about.html" class="header-link"> About </a>
-                <a href="hours.php" class="header-link"> Hours </a>
+                <a href="catalog.php" class="header-link"> Catalog </a> <br>
+                <a href="../html/about.html" class="header-link"> About </a> <br> 
+                <a href="hours.php" class="header-link"> Hours </a> <br>
                 <a href="../html/contact.html" class="header-link"> Contact </a>
             </nav>
 		</header>
@@ -84,11 +84,12 @@
 		<p> 
             Library may be closed on holidays. Please call us at <b>(706) 542-3251</b> for our holiday hours.
         </p>
+
+        <br>
 	</div>
 	
 	<div class="main-footer">
-		<p> Sharron Books </p>
-		<p> 2022 </p>
+		<p> Sharron Books | 2022 </p>
 		<p> Carson, Kylie, Joseph, Drew </p>
 	</div>
 	

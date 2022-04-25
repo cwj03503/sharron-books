@@ -42,6 +42,35 @@ CREATE TABLE `books` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Table structure for table `Administrators`
+--
+
+CREATE TABLE `Administrators` (
+  `Username` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `UserID` int(8) NOT NULL,
+  `FirstName` varchar(255) NOT NULL,
+  `LastName` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Table structure for table `Users`
+--
+
+CREATE TABLE `Users` (
+  `Username` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `RegistrationActive` tinyint(1) NOT NULL,
+  `Balance` double(10,2) NOT NULL,
+  `UserID` int(10) NOT NULL,
+  `AutoRenew` tinyint(1) NOT NULL,
+  `BookID` int(13) NOT NULL,
+  `FirstName` varchar(255) NOT NULL,
+  `LastName` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+-- --------------------------------------------------------
+
+--
 -- Dumping data for table `books`
 --
 
@@ -68,6 +97,19 @@ INSERT INTO `books` (`Title`, `Author`, `Publisher`, `Genre`, `YearPubbed`, `Des
 --
 ALTER TABLE `books`
   ADD PRIMARY KEY (`BookID`);
+COMMIT;
+
+--
+-- Indexes for table `Administrators`
+--
+ALTER TABLE `Administrators`
+  ADD PRIMARY KEY (`UserID`);
+
+--
+-- Indexes for table `Users`
+--
+ALTER TABLE `Users`
+  ADD PRIMARY KEY (`UserID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
