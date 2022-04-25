@@ -16,26 +16,30 @@
 	<meta charset="UTF-8">
     <title>Home | Sharron Books</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<!-- <link rel="stylesheet" href="css"> -->
+	<link rel="stylesheet" href="main.css">
 </head>
 <body>
     
     <!-- Navigation bar that will be at the top of the screen on all pages -->
-	<div class = "hotbar">
-		<p> Sharron Books <p>
-		<a href="login.php"> Login/Register </a>
-		<input type="text" placeholder="Search...">
+	<div class = "hotbar"> 
+		<h2>Some Library</h2>
+		<a href="login.html">Login/Register</a>
+		<p style="display: inline"> | Search </p>
+		<input type="text" placeholder="Search..." style="display: inline">
 	</div>
+	
+	<br>
     
     <!-- Header bar at the top of the home page containing a series of links and the logo -->
 	<div class="home-header"> 
 		<img src="logo" alt="Library Logo">
+		<br>
 		<header>
             <nav>
-                <a href="../php/catalog.php" class="header-link"> Catalog </a>
-                <a href="about.html" class="header-link"> About </a>
-                <a href="../php/hours.php" class="header-link"> Hours </a>
-                <a href="contact.html" class="header-link"> Contact </a>
+                <a href="../php/catalog.php" class="header-link"> Catalog </a><br>
+                <a href="about.html" class="header-link"> About </a><br>
+                <a href="../php/hours.php" class="header-link"> Hours </a><br>
+                <a href="contact.html" class="header-link"> Contact </a><br>
             </nav>
 		</header>
 	</div>
@@ -55,14 +59,18 @@
             </form>
 		</div>
         
+		<br>
+		
         <!-- Upcoming Events -->
         <div class="upcoming-events">
             <div class = "event">
-                <time> 3 29</time>
+                <time> 3/29</time>
                 <br>
                 <time datetime="2022-03-29 14:00"> March 29th at 2:00pm</time>
             </div>
         </div>
+		
+		<br>
         
         <!-- Staff Picks -->
         <!-- Ideally, this <div> will scroll horizontally. -->
@@ -86,10 +94,11 @@
         
 	</div>
 	
+	<br>
+	
     <!-- Contains a small blurb at the bottom of the page with copyright and other information -->
 	<div class="main-footer">
-		<p> Sharron Books </p>
-		<p> 2022 </p>
+		<p> Sharron Books | 2022 </p>
 		<p> Carson, Kylie, Joseph, Drew </p>
 	</div>
 	
