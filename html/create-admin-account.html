@@ -8,31 +8,32 @@
 	<meta charset="UTF-8">
     <title>About | Sharron Books</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<link rel="stylesheet" href="css">
+	<link rel="stylesheet" href="main.css">
 </head>
 <script src=""></script>
 <body>
 	
 	<div class="content">
-        <h3 class = "heading"> Create Admin Account </h3>
+        <h3 class = "heading" style="text-decoration: underline;"> Create Admin Account </h3>
         <!-- This form will send username and password to create-user-account.php -->
         <form method="POST" action="../php/create-admin-account.php">
-            <label for "username"><b>Please enter a username</b></label>
+            <label for "username"><b>Please enter a username:</b></label>
             <input type="text" name="username" required>
-            
-            <label for "password"><b>Please enter a valid password</b></label>
+            <br><br>
+            <label for "password"><b>Please enter a valid password:</b></label>
             <input type="password" name="password" required>
-            
-            <label for "confirm-password"><b>Confirm password</b></label>
+            <br><br>
+            <label for "confirm-password"><b>Confirm password:</b></label>
             <input type="password" name="confirm-password" required>
-            
+            <br><br>
             <button type="submit">Create Account</button>
         </form>
 	</div>
 	
+	<br>
+	
 	<div class="main-footer">
-		<p> Sharron Books </p>
-		<p> 2022 </p>
+		<p> Sharron Books | 2022 </p>
 		<p> Carson, Kylie, Joseph, Drew </p>
 	</div>
 	
