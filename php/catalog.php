@@ -28,12 +28,11 @@
     <!-- Navigation bar that will be at the top of the screen on all pages -->
 	<div class = "hotbar">
 		<p> Sharron Books <p>
-		<a href="login.html"> Login/Register </a>
+		<a href="../html/login.html"> Login/Register </a>
         <form action="catalog.php" method="POST">
             <input type="text" name="search" placeholder="Search...">
             <button type="submit">Search</button>
         </form>
-		
 	</div>
     
     <!-- Header bar at the top of the home page containing a series of links and the logo -->

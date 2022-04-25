@@ -33,6 +33,7 @@
             <div class="todays=hours">
                 <?php
                     #Displays the date and today's hours
+                    date_default_timezone_set('America/New_York');
                     echo "<b>" . date("l, m/d/y") . "</b> <br>";
                     switch (date("l"))
                     {
