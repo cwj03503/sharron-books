@@ -1,4 +1,9 @@
 <?php
+    /*
+     * Author - Carson Jones
+     * Displays the details of some book in the library database.
+     * This file READS from the database only.
+     */
     require_once 'config.php';
     include_once 'sanitize.php';
 ?>

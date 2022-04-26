@@ -1,19 +1,22 @@
 <!-- 
     Author - Carson Jones  Created Apr 13,22
     Displays the contents of the books table, and handles search form.
-    Reads from Database ONLY. Does not Update, Delete, Create.
+    Primarily this page is for users to view the catalog, but it may also
+    be used by admins to view who has checked out each book and delete
+    entries.
+    This page READS and DELETES from the database.
 -->
 
 <!--
     TODO
-    Fix potential SQL injection site (form handler)
     Fix issue where form info disappears on search
     Fix image display (currently, a book cover will only display properly
     if it's stored locally.)
 -->
 <?php
-    include_once 'config.php';
-    include_once 'sanitize.php';
+    require_once ('config.php');
+    require_once ('sanitize.php');
+    require_once ('delete-book.php');
 ?>
 
 <!DOCTYPE html>
@@ -60,9 +63,13 @@
         echo htmlspecialchars($_SERVER["PHP_SELF"]); // improves reload speed, avoids redirect
         echo "\" ";
         echo "method=\"post\">";   
+
+        # Genre Selection
+        echo "<label for=\"genres\"> Genres: </label>";
         echo "<select name=\"genres\" class=\"genres-dropdown\">";
         echo "<option autofocus selected value=\"All\">All</option>";
-    
+        /* The options in this selection menu are read from the "Genre" column of 
+         * the library database */
         $sql = "SELECT * FROM books;";
         $result = mysqli_query($db, $sql);
         $resultCheck = mysqli_num_rows($result); 
@@ -74,23 +81,53 @@
             }
         }
         echo "</select>";
-        echo "<input type=\"text\" name=\"search\" placeholder=\"Search...\">";
+
+        # Title Search Bar
+        echo "<label for=\"search\"> Search by Title: </label>";
+        echo "<input type=\"text\" name=\"search\" placeholder=\"Moby Dick\">";
+
+        # Sort By Selection 
+        echo "<label for=\"sort-by\"> Sort by: </label>";
+        echo "<select name=\"sort-by\" class=\"sort-by-dropdown\">";
+        echo "<option autofocus selected value=\"Title\">Title</option>";
+        echo "<option value=\"Author\"> Author </option>";
+        echo "<option value=\"Title\"> Title </option>";
+        echo "<option value=\"Genre\"> Genre </option>";
+        echo "<option value=\"Year Published\"> Year Published </option>";
+        echo "</select>";
+
         echo "<button type=\"submit\">Search</button>";
         echo "</form>";
-    
+
         # Process Search Query
     
         # sets defaults for search variables
         $sql = "SELECT * FROM books";
-        $search = $sqlGenreCondition = $sqlSubstringCondition = ""; 
+        $search = $sqlGenreCondition = $sqlSubstringCondition = $sqlSortBy = ""; 
         $genreSearch = "All";
+        $sortBy = "Title";
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
+            # Handle deletion
+            if (isset($_POST["delete"]))
+            {
+                if (delete_book($_POST("BookID")) == True)
+                {
+                    echo "<p class=\"alert\" Entry successfully removed from database. <\p> <br>";
+                }
+                else
+                {
+                    echo "<p class=\"alert error\" Failed to remove entry from database. <\p> <br>";
+                }
+            }
+
             #check if values are posted
             if (isset($_POST["genres"]))
                 $genreSearch = $_POST["genres"];
             if (isset($_POST["search"]))
                 $search = sanitize_input($_POST["search"]);
+            if (isset($_POST["sort-by"]))
+                $sortBy = sanitize_input($_POST["sort-by"]);
             
             # something has been entered in the search form text box 
             if ($search != "")
@@ -103,11 +140,16 @@
             {
                 $sqlGenreCondition = " HAVING Genre='" . $genreSearch . "'";
             }
+
+            # set Sorting condition
+                if ($sortBy == "Year Published") # manually correct option so it matched DB column name
+                    $sortBy = "YearPubbed"; 
+                $sqlSortBy = " ORDER BY " . $sortBy . " ASC";
         }
     
         #construct SQL query based on responses
     
-        $sql = $sql . $sqlSubstringCondition . $sqlGenreCondition . ";";
+        $sql = $sql . $sqlSubstringCondition . $sqlGenreCondition . $sqlSortBy . ";";
     
         # Populate Table based on query
     
@@ -116,6 +158,14 @@
         $resultCheck = mysqli_num_rows($result);
         if ($resultCheck > 0)
         {
+            if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == "true")
+            {
+                $displayAdminColumns = "true";
+            }
+            else
+            {
+                $displayAdminColumns = "false";
+            }
             echo "<table class=\"results-table\">";
             
             # update table headers manually
@@ -128,6 +178,11 @@
             echo "<th> Availability </th>";
             echo "<th>  </th>";
             echo "<th> Book Cover </th>";
+            if ($displayAdminColumns == "true")
+            {
+                echo "<th> Held by </th>";
+                echo "<th> Delete </th>";
+            }
             
             while ($row = mysqli_fetch_assoc($result))
             {
@@ -202,12 +257,38 @@
                 echo "height=\"120\"";
                 echo ">";
                 echo "</td>";
+
+                #Admin Only Columns
+                if ($displayAdminColumns == "true")
+                {
+                    # Book Holder
+                    echo "<td>";
+                    if ($row['userID'] == "NULL")
+                    {
+                        # Nobody has this book checked out
+                        echo "<p> None (Not checked out) </p>"; 
+                    }
+                    else
+                    {
+                        $users = mysqli_query($db, "SELECT * FROM users HAVING UserID=\"" . $row['userID'] . "\";");
+                        $userRow = mysqli_fetch_assoc($result);
+                        echo "<p> " . $userRow["FirstName"] . " " . $userRow["LastName"] . "</p>"; 
+                    }
+
+                    # Delete book button
+                    echo "<td>";
+                    echo "<form action=\"" . htmlspecialchars($_SERVER["PHP_SELF"]) . "\" method=\"POST\">";
+                    echo "<input type=\"hidden\" name=\"bookID\" value=\"" . $row['BookID'] . "\">";
+                    echo "<input type=\"submit\" value=\"delete\" name=\"delete\">";
+                    echo "</form>";
+                    echo "</td>";
+                }
             }
             echo "</table>";
         }
         else
         {
-            echo "<h3 class = \"heading error\"> No results found for this query. </h3>";
+            echo "<h3 class = \"alert error\"> No results found for this query. </h3>";
         }
     ?>
     
