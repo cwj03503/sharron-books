@@ -26,6 +26,8 @@
                 if ( password_verify( $passIn, $check ) ) // check for correctness
                 {
                     $uID = $ver['UserID']; // grab uID from result
+                    $username = $ver['Username']; // grab username from result
+                    $_SESSION['login_username'] = $username; // set username for session
                     $_SESSION['login_user'] = $uID; // set userID for session
                     $_SESSION['user_type'] = "false"; // set user status
          

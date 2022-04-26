@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2022 at 07:23 PM
+-- Generation Time: Apr 27, 2022 at 12:19 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -20,6 +20,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `library`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `administrators`
+--
+
+CREATE TABLE `administrators` (
+  `Username` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `UserID` int(8) NOT NULL,
+  `FirstName` varchar(255) NOT NULL,
+  `LastName` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -42,35 +56,6 @@ CREATE TABLE `books` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Table structure for table `Administrators`
---
-
-CREATE TABLE `Administrators` (
-  `Username` varchar(255) NOT NULL,
-  `Password` varchar(255) NOT NULL,
-  `UserID` int(8) NOT NULL,
-  `FirstName` varchar(255) NOT NULL,
-  `LastName` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Table structure for table `Users`
---
-
-CREATE TABLE `Users` (
-  `Username` varchar(255) NOT NULL,
-  `Password` varchar(255) NOT NULL,
-  `RegistrationActive` tinyint(1) NOT NULL,
-  `Balance` double(10,2) NOT NULL,
-  `UserID` int(10) NOT NULL,
-  `AutoRenew` tinyint(1) NOT NULL,
-  `BookID` int(13) NOT NULL,
-  `FirstName` varchar(255) NOT NULL,
-  `LastName` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
--- --------------------------------------------------------
-
---
 -- Dumping data for table `books`
 --
 
@@ -88,28 +73,55 @@ INSERT INTO `books` (`Title`, `Author`, `Publisher`, `Genre`, `YearPubbed`, `Des
 ('Alan Turing: The Enigma', 'Andrew Hodges', 'Simon & Schuster', 'Biography', 1983, 'It is only a slight exaggeration to say that the British mathematician Alan Turing (1912-1954) saved the Allies from the Nazis, invented the computer and artificial intelligence, and anticipated gay liberation by decades--all before his suicide at age forty-one. This New York Times–bestselling biography of the founder of computer science, with a new preface by the author that addresses Turing\'s royal pardon in 2013, is the definitive account of an extraordinary mind and life.', '1238348070928', 0, 0, NULL, 'Alan-Turing-The-Enigma.jpg'),
 ('The Catcher in The Rye', 'J.D. Salinger', 'Little, Brown and Company', 'Realistic Fiction', 1951, 'The hero-narrator of The Catcher in the Rye is an ancient child of sixteen, a native New Yorker named Holden Caulfield. Through circumstances that tend to preclude adult, secondhand description, he leaves his prep school in Pennsylvania and goes underground in New York City for three days. The boy himself is at once too simple and too complex for us to make any final comment about him or his story. Perhaps the safest thing we can say about Holden is that he was born in the world not just strongly attracted to beauty but, almost, hopelessly impaled on it. There are many voices in this novel: children\'s voices, adult voices, underground voices-but Holden\'s voice is the most eloquent of all. Transcending his own vernacular, yet remaining marvelously faithful to it, he issues a perfectly articulated cry of mixed pain and pleasure. However, like most lovers and clowns and poets of the higher orders, he keeps most of the pain to, and for, himself. The pleasure he gives away, or sets aside, with all his heart. It is there for the reader who can handle it to keep.', '1239539868877', 0, 0, NULL, 'The-Catcher-In-The-Rye.jpg');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `Username` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `RegistrationActive` tinyint(1) NOT NULL,
+  `Balance` double(10,2) NOT NULL,
+  `UserID` int(10) NOT NULL,
+  `AutoRenew` tinyint(1) NOT NULL,
+  `BookID` int(13) NOT NULL,
+  `FirstName` varchar(255) NOT NULL,
+  `LastName` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `administrators`
+--
+ALTER TABLE `administrators`
+  ADD PRIMARY KEY (`UserID`);
 
 --
 -- Indexes for table `books`
 --
 ALTER TABLE `books`
   ADD PRIMARY KEY (`BookID`);
-COMMIT;
 
 --
--- Indexes for table `Administrators`
+-- Indexes for table `users`
 --
-ALTER TABLE `Administrators`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`UserID`);
 
 --
--- Indexes for table `Users`
+-- AUTO_INCREMENT for dumped tables
 --
-ALTER TABLE `Users`
-  ADD PRIMARY KEY (`UserID`);
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `UserID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
