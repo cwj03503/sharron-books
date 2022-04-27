@@ -4,7 +4,10 @@
 -->
 <?php
     require( 'config.php' );
-    session_start(); // open session
+    if (session_status() == PHP_SESSION_NONE) // start session if not started already
+    {
+        session_start();
+    }
    
     session_destroy(); // close
     // setcookie("user", "", time() - 3600 );

@@ -3,7 +3,11 @@
     Skeleton page to show the login sucessa and lock out users who are not logged in.
 -->
 <?php
-    session_start(); // connect to session
+    
+    if (session_status() == PHP_SESSION_NONE) // start session if not started already
+    {
+        session_start();
+    }
     require('Config.php');
     if( !isset($_SESSION['login_user']) && !array_key_exists('cookie_name', $_COOKIE) ) // check if session and cookie are unpopulated
     {

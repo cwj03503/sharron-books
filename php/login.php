@@ -4,7 +4,10 @@
 -->
 <?php
     require("config.php");
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) // start session if not started already
+    {
+        session_start();
+    }
 
 	if ( $_SERVER["REQUEST_METHOD"] == "POST" )
 	{
