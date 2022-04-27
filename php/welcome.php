@@ -26,9 +26,9 @@
       <h1>Welcome,  <?php 
           if( isset($_SESSION['login_user']) )
           {
-            echo $_SESSION['login_username']; 
+            echo $_SESSION['login_firstname'] . " " . $_SESSION['login_lastname']; 
             echo "<br>";
-            echo "Admin?: " . $_SESSION['user_type']; 
+            echo "Admin?: " . $_SESSION['login_admin']; 
           } // if
           ?></h1> 
       <h2><a href = "logout.php">Sign Out</a></h2>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2022 at 12:19 AM
+-- Generation Time: Apr 27, 2022 at 03:17 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -82,6 +82,7 @@ INSERT INTO `books` (`Title`, `Author`, `Publisher`, `Genre`, `YearPubbed`, `Des
 CREATE TABLE `users` (
   `Username` varchar(255) NOT NULL,
   `Password` varchar(255) NOT NULL,
+  `Email` varchar(255) NOT NULL,
   `RegistrationActive` tinyint(1) NOT NULL,
   `Balance` double(10,2) NOT NULL,
   `UserID` int(10) NOT NULL,
@@ -90,6 +91,13 @@ CREATE TABLE `users` (
   `FirstName` varchar(255) NOT NULL,
   `LastName` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`Username`, `Password`, `Email`, `RegistrationActive`, `Balance`, `UserID`, `AutoRenew`, `BookID`, `FirstName`, `LastName`) VALUES
+('paige_turner', '$2y$10$8EPY95szC4zJJ0ZSDlHeiOgUfIGjjgJh34TSoe9Jm0TYPR6YoNJAa', 'sharronbooks2022@gmail.com', 0, 0.00, 3, 0, 0, 'Paige', 'Turner');
 
 --
 -- Indexes for dumped tables
@@ -121,7 +129,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `UserID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

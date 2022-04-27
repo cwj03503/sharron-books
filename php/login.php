@@ -25,11 +25,20 @@
                 $check = $ver['Password']; // pull password from db
                 if ( password_verify( $passIn, $check ) ) // check for correctness
                 {
-                    $uID = $ver['UserID']; // grab uID from result
-                    $username = $ver['Username']; // grab username from result
-                    $_SESSION['login_username'] = $username; // set username for session
-                    $_SESSION['login_user'] = $uID; // set userID for session
-                    $_SESSION['user_type'] = "false"; // set user status
+                    // extract user information
+                    $uID = $ver['UserID']; 
+                    $username = $ver['Username']; 
+                    $firstname = $ver['FirstName']; 
+                    $lastname = $ver['LastName'];
+                    // $email = $ver['email']; 
+                    
+                    // set session varibles to extracted database information
+                    $_SESSION['login_username'] = $username; 
+                    $_SESSION['login_user'] = $uID; 
+                    $_SESSION['login_firstname'] = $firstname;
+                    $_SESSION['login_lastname'] = $lastname;
+                    $_SESSION['login_admin'] = "false"; // user-status
+                    // $_SESSION['login_email'] = $email;
          
                     header("location: welcome.php"); // redirect only temporary
                 } // if
@@ -38,6 +47,7 @@
         else 
         {
             $error = "Your Login Name or Password is invalid";
+            header( 'location:../html/login.html');
         } // else
 	} // if
 ?>

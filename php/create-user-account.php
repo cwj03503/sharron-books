@@ -9,6 +9,9 @@
         $userIn = $_POST['username'];
         $passIn = $_POST['password']; 
         $chkPass = $_POST['confirm-password'];
+        $firstnameIn = $_POST['firstname'];
+        $lastnameIn = $_POST['lastname'];
+        $emailIn = $_POST['email'];
             
         if( $chkPass != $passIn ) //verify user input
             die( 'Password mismatch');
@@ -24,9 +27,9 @@
         } // if
         else // no discovered user safe to make
         {
-            $sql = $db->prepare( "INSERT INTO Users (Username, Password) VALUES (?,?)" );
+            $sql = $db->prepare( "INSERT INTO Users (Username, Password, Email, FirstName, Lastname) VALUES (?,?,?,?,?)" );
             $hash = password_hash( $passIn, PASSWORD_DEFAULT ); //hashing
-            $sql->bind_param( "ss", $userIn, $hash );
+            $sql->bind_param( "sssss", $userIn, $hash, $emailIn, $firstnameIn, $lastnameIn);
             $sql->execute();
             header("location:../html/login.html");
             } // else
