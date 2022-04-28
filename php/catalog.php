@@ -10,6 +10,7 @@
 <!--
     TODO
     Fix issue where form info disappears on search
+    Fix issue where a substring search with spaces causes php crash
     Fix image display (currently, a book cover will only display properly
     if it's stored locally.)
 -->
@@ -18,8 +19,14 @@
     require_once ('sanitize.php');
     require_once ('delete-book.php');
     include_once ('create-books-display.php');
+    include_once ('create-hotbar.php');
 ?>
-
+<?php
+    if (session_status() == PHP_SESSION_NONE) // start session if not started already
+        {
+            session_start();
+        }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,17 +47,7 @@
 	</div>
     
     <!-- Header bar at the top of the home page containing a series of links and the logo -->
-	<div class="home-header"> 
-		<img src="logo" alt="Library Logo">
-		<header>
-            <nav>
-                <a href="catalog.php" class="header-link"> Catalog </a>
-                <a href="../html/about.html" class="header-link"> About </a>
-                <a href="hours.php" class="header-link"> Hours </a>
-                <a href="../html/contact.html" class="header-link"> Contact </a>
-            </nav>
-		</header>
-	</div>
+	<?php create_hotbar(); ?>
 
     <!-- Detailed searchbar just for this page -->
     <form class = "big-searchbar"

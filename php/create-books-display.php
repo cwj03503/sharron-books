@@ -4,6 +4,9 @@
      * of rows in the "books" table of the database with headers. Makes
      * use of session variables to display certain info, so a session needs
      * to be started by the caller.
+     * 
+     * This function READS from the database only. If the delete button is pressed,
+     * the deletion form is sent to the caller.
      *  
      * @param $db - a database connection 
      * @param $sql - an SQL select statement
@@ -99,6 +102,8 @@
                 echo "<input type=\"hidden\" name=\"bookID\" value=\"" . $row['BookID'] . "\">";
                 echo "<input type=\"submit\" value=\"view details\" name=\"details\">";
                 echo "</form>";
+
+                ### If you plan on adding a button to favorite a book, here's a good place for it ###
 
                 echo "</td>";
                     
