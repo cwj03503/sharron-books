@@ -13,6 +13,7 @@
 <?php
     include_once ('includes/config.php');
     include_once ('includes/create-books-display.php');
+    include_once ('includes/create-home-header.php');
     include_once ('includes/create-hotbar.php');
     include_once ('includes/start-session.php');
 ?>
@@ -34,29 +35,6 @@
         create_home_header();
     ?>
     
-    <!-- Navigation bar that will be at the top of the screen on all pages -->
-	<div class = "hotbar"> 
-		<h2>Some Library</h2>
-		<a href="login.html">Login/Register</a>
-		<p style="display: inline"> | Search </p>
-		<input type="text" placeholder="Search..." style="display: inline">
-	</div>
-	
-	<br>
-    
-    <!-- Header bar at the top of the home page containing a series of links and the logo -->
-	<div class="home-header"> 
-		<img src="logo" alt="Library Logo">
-		<br>
-		<header>
-            <nav>
-                <a href="../php/catalog.php" class="header-link"> Catalog </a><br>
-                <a href="about.html" class="header-link"> About </a><br>
-                <a href="../php/hours.php" class="header-link"> Hours </a><br>
-                <a href="contact.html" class="header-link"> Contact </a><br>
-            </nav>
-		</header>
-	</div>
 	
     <!-- Contains the main content of the page -->
 	<div class="content">
@@ -87,23 +65,13 @@
 		<br>
         
         <!-- Staff Picks -->
-        <!-- Ideally, this <div> will scroll horizontally. -->
         <div>
             <h2> Staff Picks </h2>
-            <div class = "books-list">
-                <div class = "book">
-                    <img src="images/covers/Moby-Dick.jpg" alt="Moby-Dick Cover">
-                    <p class="book-author">
-                        by Herman Mellvile 
-                    </p>
-                </div>
-                <div class = "book">
-                    <img src="images/covers/The-Lord-of-the-Rings-The-Fellowship-of-the-Ring.jpg" alt="The Lord of the Rings: The Fellowship of the Ring Cover">
-                    <p class="book-author">
-                        by J.R.R Tolkien
-                    </p>
-                </div>
-            </div>
+            <?php
+                require_once("includes/config.php");
+                $sql = "SELECT * FROM books WHERE bookID in (1231623814238,1230000000000,1237582659510)";
+                create_books_display_short($db,$sql);
+            ?>
         </div>
         
 	</div>

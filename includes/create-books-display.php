@@ -157,7 +157,7 @@
      * Given a database connection and an SQL query, creates a simple html table
      * of rows in the "books" table of the database with headers. This is a 
      * simplified version of create_books_display that doesn't create as many rows.
-     * This function omits description, published, year published, admin columns, 
+     * This function omits genre, publisher, year published, admin columns, 
      * and the reservation button.
      *  
      * @param $db - a database connection 
@@ -195,11 +195,11 @@
                 echo $row['Author'];
                 echo "</td>";
                 
-                #Book Genre
+                #Book desription
                 echo "<td>";
-                echo $row['Genre'];
+                echo $row['Description'];
                 echo "</td>";
-    
+
                 #Contains a hidden form that will send bookID to details.php
                 echo "<td>";
                 echo "<form action=\"details.php\" method=\"GET\">";

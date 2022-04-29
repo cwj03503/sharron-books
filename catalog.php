@@ -91,6 +91,7 @@
         $sql = "SELECT * FROM books";
         $search = $sqlGenreCondition = $sqlSubstringCondition = $sqlSortBy = ""; 
         $genreSearch = "All";
+        $sortBy = "Author";
 
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
@@ -126,12 +127,12 @@
             {
                 $sqlGenreCondition = " HAVING Genre='" . $genreSearch . "'";
             }
-
-            # set Sorting condition
-                if ($sortBy == "Year Published") # manually correct option so it matched DB column name
-                    $sortBy = "YearPubbed"; 
-                $sqlSortBy = " ORDER BY " . $sortBy . " ASC";
         }
+
+        # set Sorting condition
+        if ($sortBy == "Year Published") # manually correct option so it matched DB column name
+            $sortBy = "YearPubbed"; 
+        $sqlSortBy = " ORDER BY " . $sortBy . " ASC";
     
         #construct SQL query based on responses
     
