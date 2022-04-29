@@ -2,6 +2,12 @@
     Author - Drew Jenkins  Created Mar 28,22
     Simple form for passing a desired credentials for an account to be made.
 -->
+<?php
+	include_once ('includes/create-home-header.php');
+	include_once ('includes/create-hotbar.php');
+	include_once ('includes/start-session.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,34 +18,18 @@
 </head>
 <script src=""></script>
 <body>
-	<!-- Navigation bar that will be at the top of the screen on all pages -->
-    <div class = "hotbar"> 
-		<h2>Some Library</h2>
-		<a href="login.html">Login/Register</a>
-		<p style="display: inline"> | Search </p>
-		<input type="text" placeholder="Search..." style="display: inline">
-	</div>
 	
-	<br>
-    
-     <!-- Header bar at the top of the home page containing a series of links and the logo -->
-	<div class="home-header"> 
-		<img src="logo" alt="Library Logo">
-		<br>
-		<header>
-            <nav>
-                <a href="../php/catalog.php" class="header-link"> Catalog </a><br>
-                <a href="about.html" class="header-link"> About </a><br>
-                <a href="../php/hours.php" class="header-link"> Hours </a><br>
-                <a href="contact.html" class="header-link"> Contact </a><br>
-            </nav>
-		</header>
-	</div>
+    <?php
+        /* Hotbar at the top of each page that will display a searchbar and login info */
+        create_hotbar();
+        /* Header bar at the top of the each page containing a series of links and the logo */
+        create_home_header();
+    ?>
 	
 	<div class="content">
         <h3 class = "heading" style="text-decoration: underline;"> Create Account </h3>
         <!-- This form will send username and password to create-user-account.php -->
-        <form method="POST" action="../php/create-user-account.php">
+        <form method="POST" action="includes/create-user-account.php">
             <!-- First Name -->
             <label for "firstname"><b>Enter your first name:</b></label>
             <input type="text" name="firstname" required minlength="1" maxlength="256"

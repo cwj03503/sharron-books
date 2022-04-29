@@ -28,13 +28,6 @@ Genres:
 * Poetry
 * Epic
 
-Contributors:
-* Carson Jones
-* Andrew Jenkins
-* Joseph Zheng
-* Kylie Sengpiel
-
-
 ### User Guide
 #### Entry Point
 Assuming the project has been installed and set up correctly, accessing the 
@@ -47,3 +40,9 @@ You will need to have XAMPP installed on your local maachine. You can install XA
 
 Once XAMPP has been successfully installed on your system, you'll need to run it as an administrator. Then, start running Apache and MySQL. ...
 
+### Attribution
+Contributors:
+* Carson Jones
+* Andrew Jenkins
+* Joseph Zheng
+* Kylie Sengpiel

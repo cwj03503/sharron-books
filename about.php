@@ -1,3 +1,14 @@
+<!--
+	Author - Carson Jones
+	Displays some information about the website
+-->
+
+<?php
+	include_once ('includes/create-home-header.php');
+	include_once ('includes/create-hotbar.php');
+	include_once ('includes/start-session.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,30 +20,12 @@
 <script src=""></script>
 <body>
     
-    <!-- Navigation bar that will be at the top of the screen on all pages -->
-	<div class = "hotbar"> 
-		<h2>Some Library</h2>
-		<a href="login.html">Login/Register</a>
-		<p style="display: inline"> | Search </p>
-		<input type="text" placeholder="Search..." style="display: inline">
-	</div>
-	
-	<br>
-	
-    <!-- Header bar at the top of the home page containing a series of links and the logo -->
-	<div class="home-header"> 
-		<img src="logo" alt="Library Logo">
-		<br>
-		<header>
-            <nav>
-                <a href="../php/catalog.php" class="header-link"> Catalog </a><br>
-                <a href="about.html" class="header-link"> About </a><br>
-                <a href="../php/hours.php" class="header-link"> Hours </a><br>
-                <a href="contact.html" class="header-link"> Contact </a><br>
-            </nav>
-		</header>
-	</div>
-	
+	<?php
+        /* Hotbar at the top of each page that will display a searchbar and login info */
+        create_hotbar();
+        /* Header bar at the top of the each page containing a series of links and the logo */
+        create_home_header();
+    ?>
 	
 	<div class="content">
         

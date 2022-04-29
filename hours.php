@@ -1,3 +1,13 @@
+<?php
+    /*
+     * Author - Carson Jones
+     * Displays the hours of the library
+     */
+    require_once ('includes/start-session.php');
+    include_once ('includes/create-hotbar.php');
+    include_once ('includes/create-home-header.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,25 +18,13 @@
 </head>
 <script src=""></script>
 <body>
-	<div class = "hotbar"> <!-- Navigation bar that will be at the top of the screen on all pages -->
-		<p> Some Library <p>
-		<a href="login"> Login/Register </a>
-		<input type="text" placeholder="Search...">
-	</div>
-    
-    <!-- Header bar at the top of the home page containing a series of links and the logo -->
-	<div class="home-header"> 
-		<img src="logo" alt="Library Logo">
-		<header>
-            <nav>
-                <a href="catalog.php" class="header-link"> Catalog </a> <br>
-                <a href="../html/about.html" class="header-link"> About </a> <br> 
-                <a href="hours.php" class="header-link"> Hours </a> <br>
-                <a href="../html/contact.html" class="header-link"> Contact </a>
-            </nav>
-		</header>
-	</div>
 
+    <?php
+        /* Hotbar at the top of each page that will display a searchbar and login info */
+        create_hotbar();
+        /* Header bar at the top of the each page containing a series of links and the logo */
+        create_home_header();
+    ?>
 	
 	<div class="content">
         <hr>

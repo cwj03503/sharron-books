@@ -1,3 +1,10 @@
+<?php
+    require_once ('includes/config.php'); // require server connection
+    include_once ('includes/create-home-header.php');
+	include_once ('includes/create-hotbar.php');
+	include_once ('includes/start-session.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +21,6 @@
     Basic entry for adding books in to make our admins lives easier.
     -->
     <?php
-        require("config.php"); // require server connection
         
         // Check if form has been submitted
         if (!empty($_POST))
@@ -54,25 +60,12 @@
         }
     ?>
     
-    <!-- Navigation bar that will be at the top of the screen on all pages -->
-	<div class = "hotbar">
-		<p> Sharron Books <p>
-		<a href="login.html"> Login/Register </a>
-		<input type="text" placeholder="Search...">
-	</div>
-    
-    <!-- Header bar at the top of the home page containing a series of links and the logo -->
-	<div class="home-header"> 
-		<img src="logo" alt="Library Logo">
-		<header>
-            <nav>
-                <a href="catalog.php" class="header-link"> Catalog </a>
-                <a href="../html/about.html" class="header-link"> About </a>
-                <a href="hours.php" class="header-link"> Hours </a>
-                <a href="../html/contact.html" class="header-link"> Contact </a>
-            </nav>
-		</header>
-	</div>
+    <?php
+        /* Hotbar at the top of each page that will display a searchbar and login info */
+        create_hotbar();
+        /* Header bar at the top of the each page containing a series of links and the logo */
+        create_home_header();
+    ?>
 	
     <h3 class="heading">Add an Entry</h3>
     

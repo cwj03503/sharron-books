@@ -110,9 +110,9 @@
                 #Cover image
                 echo "<td>";
                 echo "<img ";
-                echo "src=\"../images/covers/" . $row['ImageLocation'] . "\"";
+                echo "src=\"images/covers/" . $row['ImageLocation'] . "\"";
                 # If the image isn't found in images/covers, replace image with none.jpg
-                echo "onerror=\"if (this.src != '../images/covers/none.jpg') this.src = '../images/covers/none.jpg';\" ";
+                echo "onerror=\"if (this.src != 'images/covers/none.jpg') this.src = 'images/covers/none.jpg';\" ";
                 echo "alt=\"" . $row['ImageLocation'] . "\"";
                 echo "width=\"100\"";
                 echo "height=\"120\"";
@@ -207,13 +207,13 @@
                 echo "<input type=\"submit\" value=\"view details\" name=\"details\">";
                 echo "</form>";
                 echo "</td>";
-                    
+
                 #Cover image
                 echo "<td>";
                 echo "<img ";
-                echo "src=\"../images/covers/" . $row['ImageLocation'] . "\"";
+                echo "src=\"images/covers/" . $row['ImageLocation'] . "\"";
                 # If the image isn't found in images/covers, replace image with none.jpg
-                echo "onerror=\"if (this.src != '../images/covers/none.jpg') this.src = '../images/covers/none.jpg';\" ";
+                echo "onerror=\"if (this.src != 'images/covers/none.jpg') this.src = 'images/covers/none.jpg';\" ";
                 echo "alt=\"" . $row['ImageLocation'] . "\"";
                 echo "width=\"100\"";
                 echo "height=\"120\"";

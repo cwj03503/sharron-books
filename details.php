@@ -4,9 +4,15 @@
      * Displays the details of some book in the library database.
      * This file READS from the database only.
      */
-    require_once 'config.php';
-    include_once 'sanitize.php';
+    require_once ('includes/config.php');
+    require_once ('includes/sanitize.php');
+    require_once ('includes/delete-book.php');
+    include_once ('includes/create-books-display.php');
+    include_once ('includes/create-hotbar.php');
+    include_once ('includes/create-home-header.php');
+    require_once ('includes/start-session.php');
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,26 +24,14 @@
 </head>
 <script src=""></script>
 <body>
-	<div class = "hotbar"> <!-- Navigation bar that will be at the top of the screen on all pages -->
-		<p> Some Library <p>
-		<a href="login"> Login/Register </a>
-		<input type="text" placeholder="Search...">
-	</div>
-    
-    <!-- Header bar at the top of the home page containing a series of links and the logo -->
-	<div class="home-header"> 
-		<img src="logo" alt="Library Logo">
-		<header>
-            <nav>
-                <a href="catalog.php" class="header-link"> Catalog </a>
-                <a href="../html/about.html" class="header-link"> About </a>
-                <a href="hours.php" class="header-link"> Hours </a>
-                <a href="../html/contact.html" class="header-link"> Contact </a>
-            </nav>
-		</header>
-	</div>
 
-	
+	<?php
+        /* Hotbar at the top of each page that will display a searchbar and login info */
+        create_hotbar();
+        /* Header bar at the top of the each page containing a series of links and the logo */
+        create_home_header();
+    ?>
+
 	<div class="content">
         <?php
     
@@ -70,9 +64,9 @@
                 echo "<h3 class=\"subheading\">" . $author . "</h3>";
                 
                 echo "<img ";
-                echo "src=\"../images/covers/" . $imageLocation . "\"";
+                echo "src=\"images/covers/" . $imageLocation . "\"";
                 # If the image isn't found in images/covers, replace image with none.jpg
-                echo "onerror=\"if (this.src != '../images/covers/none.jpg') this.src = '../images/covers/none.jpg';\" ";
+                echo "onerror=\"if (this.src != 'images/covers/none.jpg') this.src = 'images/covers/none.jpg';\" ";
                 echo "alt=\"" . $imageLocation . "\"";
                 echo "width=\"300\"";
                 echo ">";

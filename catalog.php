@@ -15,17 +15,13 @@
     if it's stored locally.)
 -->
 <?php
-    require_once ('config.php');
-    require_once ('sanitize.php');
-    require_once ('delete-book.php');
-    include_once ('create-books-display.php');
-    include_once ('create-hotbar.php');
-?>
-<?php
-    if (session_status() == PHP_SESSION_NONE) // start session if not started already
-        {
-            session_start();
-        }
+    require_once ('includes/config.php');
+    require_once ('includes/sanitize.php');
+    require_once ('includes/delete-book.php');
+    include_once ('includes/create-books-display.php');
+    include_once ('includes/create-hotbar.php');
+    include_once ('includes/create-home-header.php');
+    require_once ('includes/start-session.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,18 +32,13 @@
 </head>
 <body>
     
-    <!-- Navigation bar that will be at the top of the screen on all pages -->
-	<div class = "hotbar">
-		<p> Sharron Books <p>
-		<a href="../html/login.html"> Login/Register </a>
-        <form action="catalog.php" method="POST">
-            <input type="text" name="search" placeholder="Search...">
-            <button type="submit">Search</button>
-        </form>
-	</div>
     
-    <!-- Header bar at the top of the home page containing a series of links and the logo -->
-	<?php create_hotbar(); ?>
+    <?php
+        /* Hotbar at the top of each page that will display a searchbar and login info */
+        create_hotbar();
+        /* Header bar at the top of the each page containing a series of links and the logo */
+        create_home_header();
+    ?>
 
     <!-- Detailed searchbar just for this page -->
     <form class = "big-searchbar"
@@ -73,6 +64,8 @@
             }
         ?>
         </select>
+
+        <!-- This would be a good place on the form to add filtering by favorites -->
 
         <!-- Title Search Bar -->
         <label for=\"search\"> Search by Title: </label>

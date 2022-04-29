@@ -14,7 +14,7 @@
         else 
         {
             // user is not logged in, display login link
-            echo "<a href=\"../html/login.html\"> Log in / Register </a>"; // fix this path later
+            echo "<a href=\"login-form.php\"> Log in / Register </a>"; // fix this path later
         }
 		echo "<form action=\"catalog.php\" method=\"POST\">";
         echo "<input type=\"text\" name=\"search\" placeholder=\"Search our catalog...\">";

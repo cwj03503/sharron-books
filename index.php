@@ -10,6 +10,13 @@
     Fix books display, events display
 -->
 
+<?php
+    include_once ('includes/config.php');
+    include_once ('includes/create-books-display.php');
+    include_once ('includes/create-hotbar.php');
+    include_once ('includes/start-session.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +26,13 @@
 	<link rel="stylesheet" href="main.css">
 </head>
 <body>
+
+    <?php
+        /* Hotbar at the top of each page that will display a searchbar and login info */
+        create_hotbar();
+        /* Header bar at the top of the each page containing a series of links and the logo */
+        create_home_header();
+    ?>
     
     <!-- Navigation bar that will be at the top of the screen on all pages -->
 	<div class = "hotbar"> 
