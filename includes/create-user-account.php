@@ -16,7 +16,7 @@
         if( $chkPass != $passIn ) //verify user input
             die( 'Password mismatch');
                 
-        $sql = $db->prepare("SELECT Username FROM Users WHERE Username = ?");
+        $sql = $db->prepare("SELECT Username FROM users WHERE Username = ?");
         $sql->bind_param( "s", $userIn ); //binding to prevent sql injection
         $sql->execute();
         $result = $sql->get_result();
@@ -27,7 +27,7 @@
         } // if
         else // no discovered user safe to make
         {
-            $sql = $db->prepare( "INSERT INTO Users (Username, Password, Email, FirstName, Lastname) VALUES (?,?,?,?,?)" );
+            $sql = $db->prepare( "INSERT INTO users (Username, Password, Email, FirstName, Lastname) VALUES (?,?,?,?,?)" );
             $hash = password_hash( $passIn, PASSWORD_DEFAULT ); //hashing
             $sql->bind_param( "sssss", $userIn, $hash, $emailIn, $firstnameIn, $lastnameIn);
             $sql->execute();

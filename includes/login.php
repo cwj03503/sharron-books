@@ -14,7 +14,7 @@
 		$userIn = $_POST['username'];
 		$passIn = $_POST['password']; 
               
-        $sql = $db->prepare("SELECT * FROM Users WHERE Username = ?"); // statement to check username exists
+        $sql = $db->prepare("SELECT * FROM users WHERE Username = ?"); // statement to check username exists
         $sql->bind_param( "s", $userIn ); //binding to prevent sql injection
         $sql->execute();
         if ( $result = $sql->get_result() )
@@ -33,7 +33,7 @@
                     $username = $ver['Username']; 
                     $firstname = $ver['FirstName']; 
                     $lastname = $ver['LastName'];
-                    // $email = $ver['email']; 
+                    $email = $ver['Email']; 
                     
                     // set session varibles to extracted database information
                     $_SESSION['login_username'] = $username; 
@@ -41,7 +41,7 @@
                     $_SESSION['login_firstname'] = $firstname;
                     $_SESSION['login_lastname'] = $lastname;
                     $_SESSION['login_admin'] = "false"; // user-status
-                    // $_SESSION['login_email'] = $email;
+                    $_SESSION['login_email'] = $email;
          
                     header("location: welcome.php"); // redirect only temporary
                 } // if
@@ -50,7 +50,7 @@
         else 
         {
             $error = "Your Login Name or Password is invalid";
-            header( 'location:../html/login.html');
+            header( 'location:../login-form.php');
         } // else
 	} // if
 ?>

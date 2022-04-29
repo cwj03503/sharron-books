@@ -14,7 +14,7 @@
 		$userIn = $_POST['username'];
 		$passIn = $_POST['password']; 
               
-        $sql = $db->prepare("SELECT * FROM Administrators WHERE Username = ?"); // statement to check username exists
+        $sql = $db->prepare("SELECT * FROM administrators WHERE Username = ?"); // statement to check username exists
         $sql->bind_param( "s", $userIn ); //binding to prevent sql injection
         $sql->execute();
         if ( $result = $sql->get_result() )
@@ -29,8 +29,20 @@
                 if ( password_verify( $passIn, $check ) ) // check for correctness
                 {
                     $aID = $ver['UserID']; // grab uID from result
+                    $username = $ver['Username']; 
+                    $firstname = $ver['FirstName']; 
+                    $lastname = $ver['LastName'];
+                    $email = $ver['Email']; 
+                    
+                    // set session varibles to extracted database information
+                    $_SESSION['login_username'] = $username; 
+                    $_SESSION['login_user'] = $aID; 
+                    $_SESSION['login_firstname'] = $firstname;
+                    $_SESSION['login_lastname'] = $lastname;
+                    $_SESSION['login_email'] = $email;
+    
                     $_SESSION['login_user'] = $aID; // set adminID for session
-                    $_SESSION['user_type'] = "true"; // set admin status
+                    $_SESSION['login_admin'] = "true"; // set admin status
          
                     header("location: welcome.php"); // redirect only temporary
                 } // if
