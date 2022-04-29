@@ -10,7 +10,6 @@
 <!--
     TODO
     Fix issue where form info disappears on search
-    Fix issue where a substring search with spaces causes php crash
     Fix image display (currently, a book cover will only display properly
     if it's stored locally.)
 -->
@@ -29,6 +28,8 @@
     <title>
         Catalog | Sharron Books
     </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
     
@@ -68,13 +69,13 @@
         <!-- This would be a good place on the form to add filtering by favorites -->
 
         <!-- Title Search Bar -->
-        <label for=\"search\"> Search by Title: </label>
-        <input type=\"text\" name=\"search\" placeholder=\"Moby Dick\">
+        <label for="search"> Search by Title: </label>
+        <input type="text" name="search" placeholder="Moby Dick">
 
         <!-- Sort By Selection -->
         <label for="sort-by"> Sort by: </label>
             <select name="sort-by" class="sort-by-dropdown">
-            <option autofocus selected value=\"Title\">Title</option>
+            <option autofocus selected value="Title">Title</option>
             <option value="Author"> Author </option>
             <option value="Title"> Title </option>
             <option value="Genre"> Genre </option>
@@ -90,7 +91,7 @@
         $sql = "SELECT * FROM books";
         $search = $sqlGenreCondition = $sqlSubstringCondition = $sqlSortBy = ""; 
         $genreSearch = "All";
-        $sortBy = "Title";
+
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
             # Handle deletion
@@ -135,7 +136,7 @@
         #construct SQL query based on responses
     
         $sql = $sql . $sqlSubstringCondition . $sqlGenreCondition . $sqlSortBy . ";";
-    
+        
         # Populate Table based on query
         create_books_display($db,$sql);
     ?>
