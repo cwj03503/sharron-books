@@ -43,7 +43,7 @@
                     $_SESSION['login_admin'] = "false"; // user-status
                     $_SESSION['login_email'] = $email;
          
-                    header("location: ../profile.php"); // redirect only temporary
+                    header("location:../profile.php"); // redirect only temporary
                 } // if
       		} // if
         } // if
