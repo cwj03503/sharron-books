@@ -2,6 +2,7 @@
     require_once ('includes/config.php'); // require server connection
     include_once ('includes/create-home-header.php');
 	include_once ('includes/create-hotbar.php');
+	include_once ('includes/create-footer.php');
 	include_once ('includes/start-session.php');
 ?>
 
@@ -118,11 +119,10 @@
         </form>
 	</div>
 	
-	<div class="main-footer">
-		<p> Sharron Books </p>
-		<p> 2022 </p>
-		<p> Carson, Kylie, Joseph, Drew </p>
-	</div>
+	<?php
+		/* Footer at the end of the page that displays some basic website info */
+		create_footer();
+	?>
 	
 </body>
 </html> 

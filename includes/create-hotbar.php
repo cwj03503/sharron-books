@@ -14,12 +14,13 @@
         else 
         {
             // user is not logged in, display login link
-            echo "<a href=\"login-form.php\"> Log in / Register </a>"; 
+            echo "<a href=\"login-form.php\"> Login / Register </a>"; 
         }
 		echo "<form action=\"catalog.php\" method=\"POST\">";
         echo "<input type=\"text\" name=\"search\" placeholder=\"Search our catalog...\">";
         echo "<button type=\"submit\">Search</button>";
         echo "</form>";
 	    echo "</div>";
+		echo "<br>";
     }
 ?>

@@ -20,6 +20,7 @@
     include_once ('includes/create-books-display.php');
     include_once ('includes/create-hotbar.php');
     include_once ('includes/create-home-header.php');
+	include_once ('includes/create-footer.php');
     require_once ('includes/start-session.php');
 ?>
 <!DOCTYPE html>
@@ -141,6 +142,11 @@
         # Populate Table based on query
         create_books_display($db,$sql);
     ?>
+	
+	<?php
+		/* Footer at the end of the page that displays some basic website info */
+		create_footer();
+	?>
     
 </body>
 </html>

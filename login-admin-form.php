@@ -2,6 +2,11 @@
     Author - Drew Jenkins  Created Apr 21,22
     Form to process the admin's login and begin their session
 -->
+
+<?php
+	include_once ('includes/create-footer.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,11 +32,10 @@
         </form>
 	</div> 
 	
-	<br>
-	<div class="main-footer">
-		<p> Sharron Books | 2022 </p>
-		<p> Carson, Kylie, Joseph, Drew </p>
-	</div>
+	<?php
+		/* Footer at the end of the page that displays some basic website info */
+		create_footer();
+	?>
 	
 </body>
 </html> 
