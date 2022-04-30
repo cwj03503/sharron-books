@@ -11,5 +11,5 @@
    
     session_destroy(); // close
     // setcookie("user", "", time() - 3600 );
-    header("location: ../html/Index.html"); // go to index page
+    header("location: ../catalog.php"); // go to index page
 ?>
