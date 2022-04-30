@@ -16,14 +16,14 @@
         if( $chkPass != $passIn ) //verify user input
             die( 'Password mismatch');
                 
-        $sql = $db->prepare("SELECT Username FROM users WHERE Username = ?");
-        $sql->bind_param( "s", $userIn ); //binding to prevent sql injection
+        $sql = $db->prepare("SELECT Username FROM users WHERE Username = ? OR Email = ?");
+        $sql->bind_param( "ss", $userIn, $emailIn ); //binding to prevent sql injection
         $sql->execute();
         $result = $sql->get_result();
         $count = $result->num_rows;
         if ( $count != 0 ) // if count is not 0 there was a user with the name
         {                
-            $error = "Username is already in use.";
+            $error = "Username or Email is already in use.";
         } // if
         else // no discovered user safe to make
         {
@@ -31,7 +31,7 @@
             $hash = password_hash( $passIn, PASSWORD_DEFAULT ); //hashing
             $sql->bind_param( "sssss", $userIn, $hash, $emailIn, $firstnameIn, $lastnameIn);
             $sql->execute();
-            header("location:../html/login.html");
+            header("location:../login-form.php");
             } // else
         } // if
     ?>

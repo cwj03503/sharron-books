@@ -44,13 +44,14 @@
                     $_SESSION['login_user'] = $aID; // set adminID for session
                     $_SESSION['login_admin'] = "true"; // set admin status
          
-                    header("location: welcome.php"); // redirect only temporary
+                    header("location: ../profile-admin.php"); // redirect only temporary
                 } // if
       		} // if
         } // if
         else 
         {
             $error = "Your Login Name or Password is invalid";
+            header( 'location:../login-admin-form.php');
         } // else
 	} // if
 ?>

@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-    <title>About | Sharron Books</title>
+    <title>Admin Login | Sharron Books</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<link rel="stylesheet" href="main.css">
 </head>
@@ -16,7 +16,7 @@
 	<div class="content">
 		<h3 style="text-decoration: underline;">Admin Login</h3>
 	
-        <form method="POST" action="../php/login-admin.php">
+        <form method="POST" action="../includes/login-admin.php">
             <label><b>Username</b></label>
             <input type="text" name="username" required>
             

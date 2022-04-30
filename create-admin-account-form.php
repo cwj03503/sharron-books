@@ -6,13 +6,19 @@
 	include_once ('includes/create-home-header.php');
 	include_once ('includes/create-hotbar.php');
 	include_once ('includes/start-session.php');
+
+    if ( !isset($_SESSION['login_admin']) || $_SESSION['login_admin'] != true)
+    {
+        header('Location:login-admin-form.php');
+        exit;
+    } // if
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-    <title>Create User Account | Sharron Books</title>
+    <title>Create Admin Account | Sharron Books</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<link rel="stylesheet" href="css/main.css">
 </head>
@@ -29,7 +35,7 @@
 	<div class="content">
         <h3 class = "heading" style="text-decoration: underline;"> Create Account </h3>
         <!-- This form will send username and password to create-user-account.php -->
-        <form method="POST" action="includes/create-user-account.php">
+        <form method="POST" action="includes/create-admin-account.php">
             <!-- First Name -->
             <label for "firstname"><b>Enter your first name:</b></label>
             <input type="text" name="firstname" required minlength="1" maxlength="256"
@@ -61,7 +67,7 @@
             <input type="Password" name="confirm-password" required
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
             <br><br>
-            <button type="submit">Create Account</button>
+            <button type="submit">Create Admin Account</button>
         </form>
 	</div>
 	
