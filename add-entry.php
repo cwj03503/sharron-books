@@ -2,6 +2,7 @@
     require_once ('includes/config.php'); // require server connection
     include_once ('includes/create-home-header.php');
 	include_once ('includes/create-hotbar.php');
+	include_once ('includes/create-footer.php');
 	include_once ('includes/start-session.php');
 ?>
 
@@ -63,66 +64,70 @@
     <?php
         /* Hotbar at the top of each page that will display a searchbar and login info */
         create_hotbar();
-        /* Header bar at the top of the each page containing a series of links and the logo */
-        create_home_header();
-    ?>
+        ?>
 	
-    <h3 class="heading">Add an Entry</h3>
-    
-    <p> To generate a new entry in the library database, please enter all required information, then click "submit". For "Book Cover Image" Please provide an image URL or a location on the filesystem.</p>
-    
-	<div class="content">
-        <!-- This form will be used to add an entry to the books table -->
-        <form method="POST" action=<?php echo "\"" . htmlspecialchars($_SERVER["PHP_SELF"]) . "\"";?>>
-            <div class="input required-input">
-                <label for "title"><b>Title</b></label>
-                <input type="text" maxLength="256" name="title" required>
-            </div>
-            
-            <div class="input required-input text-input">
-                <label for "author"><b>Author</b></label>
-                <input type="text" maxLength="256" name="author" required>
-            </div>
-            
-            <div class="input required-input text-input">
-                <label for "publisher"><b>Publisher</b></label>
-                <input type="text" maxLength="256" name="publisher" required>
-            </div>
-            
-            <div class="input required-input text-input">
-                <label for "genre"><b>Genre</b></label>
-                <input type="text" maxLength="256" name="genre" required>
-            </div>
-            
-            <div class="input required-input number-input">
-                <label for "yearPubbed"><b>Year of orginal publication</b></label>
-                <input type="number" min="1000" max="2099" step="1" name="yearPubbed" required>
-            </div>
-            
-            <div class="input required-input number-input">
-                <label for "bookID"><b>ISPN-13 barcode number</b></label>
-                <input type="number" minlength="13" maxlength="13" min="1000000000000" value ="1230000000000" name="bookID" required>
-            </div>
-            
-            <div class="input text-input long-text-input">
-                <label for "description"><b>Description</b></label>
-                <input type="text" maxLength="1024" name="description">
-            </div>
-            
-            <div class="input text-input">
-                <label for "imageLocation"><b>Book Cover Image (image URL)</b></label>
-                <input type="text" maxLength="1024" name="imageLocation">
-            </div>
-                
-            <button type="submit">Submit</button>
-        </form>
+	<div class="linedUp">
+		<?php
+			/* Header bar at the top of the each page containing a series of links and the logo */
+			create_home_header();
+		?>
+	
+		<h3 class="heading">Add an Entry</h3>
+		
+		<p> To generate a new entry in the library database, please enter all required information, then click "submit". For "Book Cover Image" Please provide an image URL or a location on the filesystem.</p>
+		
+		<div class="content">
+			<!-- This form will be used to add an entry to the books table -->
+			<form method="POST" action=<?php echo "\"" . htmlspecialchars($_SERVER["PHP_SELF"]) . "\"";?>>
+				<div class="input required-input">
+					<label for "title"><b>Title</b></label>
+					<input type="text" maxLength="256" name="title" required>
+				</div>
+				
+				<div class="input required-input text-input">
+					<label for "author"><b>Author</b></label>
+					<input type="text" maxLength="256" name="author" required>
+				</div>
+				
+				<div class="input required-input text-input">
+					<label for "publisher"><b>Publisher</b></label>
+					<input type="text" maxLength="256" name="publisher" required>
+				</div>
+				
+				<div class="input required-input text-input">
+					<label for "genre"><b>Genre</b></label>
+					<input type="text" maxLength="256" name="genre" required>
+				</div>
+				
+				<div class="input required-input number-input">
+					<label for "yearPubbed"><b>Year of orginal publication</b></label>
+					<input type="number" min="1000" max="2099" step="1" name="yearPubbed" required>
+				</div>
+				
+				<div class="input required-input number-input">
+					<label for "bookID"><b>ISPN-13 barcode number</b></label>
+					<input type="number" minlength="13" maxlength="13" min="1000000000000" value ="1230000000000" name="bookID" required>
+				</div>
+				
+				<div class="input text-input long-text-input">
+					<label for "description"><b>Description</b></label>
+					<input type="text" maxLength="1024" name="description">
+				</div>
+				
+				<div class="input text-input">
+					<label for "imageLocation"><b>Book Cover Image (image URL)</b></label>
+					<input type="text" maxLength="1024" name="imageLocation">
+				</div>
+					
+				<button type="submit">Submit</button>
+			</form>
+		</div>
 	</div>
 	
-	<div class="main-footer">
-		<p> Sharron Books </p>
-		<p> 2022 </p>
-		<p> Carson, Kylie, Joseph, Drew </p>
-	</div>
+	<?php
+		/* Footer at the end of the page that displays some basic website info */
+		create_footer();
+	?>
 	
 </body>
 </html> 
