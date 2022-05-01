@@ -76,7 +76,9 @@
                 
                 #Book desription
                 echo "<td>";
-                echo $row['Description'];
+                    echo "<p class=\"book-description\">";
+                        echo $row['Description'];
+                    echo "</p>";
                 echo "</td>";
                 
                 #Book availability
