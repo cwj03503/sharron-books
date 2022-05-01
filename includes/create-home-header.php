@@ -6,6 +6,7 @@
         echo "<br>";
         echo "<header>";
             echo "<nav>";
+                echo "<a href=\"index.php\" class=\"header-link\"> Home </a><br>";
                 echo "<a href=\"catalog.php\" class=\"header-link\"> Catalog </a><br>";
                 echo "<a href=\"about.php\" class=\"header-link\"> About </a><br>";
                 echo "<a href=\"hours.php\" class=\"header-link\"> Hours </a><br>";

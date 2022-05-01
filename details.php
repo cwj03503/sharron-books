@@ -58,15 +58,13 @@
 									$description,
 									$bookID,
 									$checkedOut,
-									$reserved,
-									$userID,
 									$imageLocation);
 					
 					
 					# Process and display results
 					$stmt->fetch();
 					echo "<h3 class=\"heading\"> \"" . $title . "\" </h1>";
-					echo "<h3 class=\"subheading\">" . $author . "</h3>";
+					echo "<h3 class=\"subheading\"> by " . $author . "</h3>";
 					
 					echo "<img ";
 					echo "src=\"images/covers/" . $imageLocation . "\"";
