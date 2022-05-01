@@ -7,11 +7,11 @@
 	include_once ('includes/create-hotbar.php');
 	include_once ('includes/start-session.php');
 
-    if ( !isset($_SESSION['login_admin']) || $_SESSION['login_admin'] != true)
+   /* if ( !isset($_SESSION['login_admin']) || $_SESSION['login_admin'] != true)
     {
         header('Location:login-admin-form.php');
         exit;
-    } // if
+    } // if */
 ?>
 
 <!DOCTYPE html>
