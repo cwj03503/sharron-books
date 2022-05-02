@@ -58,6 +58,10 @@ div {
 	justify-content: center;
 }
 
+tr.dotted, td.dotted {
+	border-top: 1px dotted black;
+}
+
 a:link {
 	color: slateblue;
 }
@@ -85,4 +89,3 @@ a.header-link:visited {
 a:hover, a:active {
 	color: red;
 }
-
