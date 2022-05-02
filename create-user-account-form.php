@@ -1,6 +1,7 @@
 <!-- 
     Author - Drew Jenkins  Created Mar 28,22
     Simple form for passing a desired credentials for an account to be made.
+	This page CREATES an entry in the administrators database.
 -->
 <?php
 	include_once ('includes/create-home-header.php');

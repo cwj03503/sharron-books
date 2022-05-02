@@ -1,7 +1,8 @@
 <?php
     /*
      * Author - Carson Jones
-     * Displays the hours of the library
+     * Displays the hours of the library.
+	 * This page doesn't interact with the database at all.
      */
     require_once ('includes/start-session.php');
     include_once ('includes/create-hotbar.php');
@@ -62,7 +63,7 @@
 					<td>7:30 AM - 9:00 PM</td>
 				</tr>
 				<tr>
-					<td>Wedneday</td>
+					<td>Wednesday</td>
 					<td>7:30 AM - 9:00 PM</td>
 				</tr>
 				<tr>

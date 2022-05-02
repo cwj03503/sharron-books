@@ -1,6 +1,7 @@
 <!-- 
     Author - Drew Jenkins  Created Mar 28,22
-    Showing the current user their homepage with account details and registered books
+    Showing the current user their homepage with account details and registered books.
+	This page READS from the users table
 -->
 <?php
 	include_once ('includes/create-home-header.php');

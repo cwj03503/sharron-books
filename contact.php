@@ -1,3 +1,9 @@
+<!-- 
+Author: Carson Jones
+This page displays the contact information of the library.
+This page does not access the database at all.
+-->
+
 <?php
 	include_once ('includes/create-home-header.php');
 	include_once ('includes/create-hotbar.php');

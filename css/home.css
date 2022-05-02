@@ -47,6 +47,14 @@
 	align-content: space-between;
 }
 
+.vertical-block {
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: space-between;
+	align-items: center;
+}
+
 .centered {
 	position: absolute;
 	top: 50%;
@@ -67,4 +75,24 @@
 .big-searchbar-button {
 	line-height: 28px;
 	padding: 5px;
+}
+
+.home-table
+{
+	width: 90%;
+	height: 80%;
+	border: 1px solid;
+	border-radius: 3%;
+}
+
+.home-table tr:nth-child(even){
+	background-color: #fffff3;	
+
+}
+
+.outlined {
+	border: 3px solid #404040;
+	border-radius: 15px;
+	padding: 10px;
+	color: black;
 }

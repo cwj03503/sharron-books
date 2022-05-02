@@ -59,31 +59,64 @@
 			
 			<br>
 			
-			<div class="info-blurb">
-				<b> Today's Hours: </b> 
-				<?php
-					#Displays the date and today's hours
-					date_default_timezone_set('America/New_York');
-					switch (date("l"))
-					{
-						case "Sunday": echo "CLOSED"; break;
-						case "Monday": echo "7:30 AM - 9:00 PM"; break;
-						case "Tuesday": echo "7:30 AM - 9:00 PM"; break;
-						case "Wednesday": echo "7:30 AM - 9:00 PM"; break;
-						case "Thursday": echo "7:30 AM - 9:00 PM"; break;
-						case "Friday": echo "7:30 AM - 5:00 PM"; break;
-						case "Saturday": echo "12:00 PM - 9:00 PM"; break;
-					}
-				?>
+			<div class="info-blurb" >
+				<p>
+					Sharron Books is a fictional library created for Dr. Mario's Web Programming class by Carson Jones, Kylie Sengpiel, Andrew Jenkins, and Joseph Zheng. It's main feature is a dynamic database of books and users which interact with eachother through the website's interface. To begin browsing, use the search bar above, or click on the "catalog" link to the left. As a registered user, you may reserve up to two books for checkout, create a list of favorite books for easy reference, and view details on every book in our collection. <a href="create-user-account-form.php"> Click here to register now! </a>
+				</p> 
 			</div>
 
 			<!-- contains a website introduction and a group of staff picks -->
 			<div class="horizontal-block">
 				<!-- A brief statement about what this website is -->
-				<div class="info-blurb" style="width: 40%; ">
-					<p>
-						Sharron Books is a fictional library created for Dr. Mario's Web Programming class by Carson Jones, Kylie Sengpiel, Andrew Jenkins, and Joseph Zheng. It's main feature is a dynamic database of books and users which interact with eachother through the website's interface. To begin browsing, use the search bar above, or click on the "catalog" link to the left. As a registered user, you may reserve up to two books for checkout, create a list of favorite books for easy reference, and view details on every book in our collection. <a href="create-user-account-form.php"> Click here to register now! </a>
-					</p> 
+				<div class="vertical-block outlined" style="width: 40%; ">
+					<h2> Hours </h2>
+					<b> Today's Hours: 
+						<?php
+							#Displays the date and today's hours
+							date_default_timezone_set('America/New_York');
+							switch (date("l"))
+							{
+								case "Sunday": echo "CLOSED"; break;
+								case "Monday": echo "7:30 AM - 9:00 PM"; break;
+								case "Tuesday": echo "7:30 AM - 9:00 PM"; break;
+								case "Wednesday": echo "7:30 AM - 9:00 PM"; break;
+								case "Thursday": echo "7:30 AM - 9:00 PM"; break;
+								case "Friday": echo "7:30 AM - 5:00 PM"; break;
+								case "Saturday": echo "12:00 PM - 9:00 PM"; break;
+							}
+						?>
+					<br>
+					</b>
+						<table class="home-table" >
+							<tr>
+								<td>Monday</td>
+								<td>7:30 AM - 9:00 PM</td>
+							</tr>
+							<tr>
+								<td>Tuesday</td>
+								<td>7:30 AM - 9:00 PM</td>
+							</tr>
+							<tr>
+								<td>Wednesday</td>
+								<td>7:30 AM - 9:00 PM</td>
+							</tr>
+							<tr>
+								<td>Thursday</td>
+								<td>7:30 AM - 9:00 PM</td>
+							</tr>
+							<tr>
+								<td>Friday</td>
+								<td>7:30 AM - 5:00 PM</td>
+							</tr>
+							<tr>
+								<td>Saturday</td>
+								<td>12:00 PM - 9:00 PM</td>
+							</tr>
+							<tr>
+								<td>Sunday</td>
+								<td>CLOSED</td>
+							</tr>
+						</table>
 				</div>
 				
 				<br>
