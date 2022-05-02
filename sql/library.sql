@@ -59,6 +59,8 @@ CREATE TABLE `books` (
   `BookID` decimal(13,0) PRIMARY KEY NOT NULL,
   `CheckedOut` tinyint(1) NOT NULL DEFAULT 0,
   `ImageLocation` varchar(255) DEFAULT NULL
+	
+   FOREIGN KEY (Category) REFERENCES CategoryTable(CategoryID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -72,7 +74,7 @@ CREATE TABLE BookReserve
 	`ReservedDate` DATE,
 	
 	PRIMARY KEY (BookID, Username),
-	FOREIGN KEY(BookID) REFERENCES books(BookID),
+	FOREIGN KEY (BookID) REFERENCES books(BookID),
 	FOREIGN KEY (Username) REFERENCES users(Username)
 );
 
