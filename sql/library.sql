@@ -47,8 +47,7 @@ INSERT INTO `administrators` (`Username`, `Password`, `Email`, `UserID`, `FirstN
 
 CREATE TABLE CategoryTable
 (
-	CategoryID INT  PRIMARY KEY,
-	CategoryDescription varchar(20)
+	CategoryID int  PRIMARY KEY,
 );
 
 --
@@ -64,10 +63,9 @@ CREATE TABLE `books` (
   `Description` text DEFAULT NULL,
   `BookID` decimal(13,0) PRIMARY KEY NOT NULL,
   `CheckedOut` tinyint(1) NOT NULL DEFAULT 0,
-  `Category` int,
   `ImageLocation` varchar(255) DEFAULT NULL
 	
-   FOREIGN KEY (Category) REFERENCES CategoryTable(CategoryID)
+   FOREIGN KEY (Genre) REFERENCES CategoryTable(CategoryID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
