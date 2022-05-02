@@ -89,6 +89,8 @@
 				</select>
 				<button type="submit">Search</button>
 			</form>
+			
+			<hr style="border: none; border-top: 2px dotted black; color: #F2F2F2; background-color: #F2F2F2; height: 4px; width: 50%;">
 
 			<?php
 				# Process Search Query

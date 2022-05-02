@@ -47,42 +47,42 @@
             {
                 # Each attribute of the $row array will be processed as a 
                 # row in a table.
-                echo "<tr>";
+                echo "<tr class=\"dotted\">";
                 
                 #Book title
-                echo "<td>";
+                echo "<td class=\"dotted\">";
                 echo $row['Title'];
                 echo "</td>";
                 
                 #Book author
-                echo "<td>";
+                echo "<td class=\"dotted\">";
                 echo $row['Author'];
                 echo "</td>";
                 
                 #Book Publisher (Fix Issue for no publisher)
-                echo "<td>";
+                echo "<td class=\"dotted\">";
                 echo $row['Publisher'];
                 echo "</td>";
                 
                 #Book Genre
-                echo "<td>";
+                echo "<td class=\"dotted\">";
                 echo $row['Genre'];
                 echo "</td>";
                 
                 #Year of Publication
-                echo "<td>";
+                echo "<td class=\"dotted\">";
                 echo $row['YearPubbed'];
                 echo "</td>";
                 
                 #Book desription
-                echo "<td>";
+                echo "<td class=\"dotted\">";
                     echo "<p class=\"book-description\">";
                         echo $row['Description'];
                     echo "</p>";
                 echo "</td>";
                 
                 #Book availability
-                echo "<td>";
+                echo "<td class=\"dotted\">";
                 if ($row['CheckedOut'] == 0)
                 {
                     echo "available";
@@ -94,7 +94,7 @@
                 
                 #Buttons
                 #Contains a hidden form that will send info to reserve.php
-                echo "<td>";
+                echo "<td class=\"dotted\">";
                 echo "<form action=\"reserve.php\" method=\"GET\">";
                 echo "<input type=\"hidden\" name=\"bookID\" value=\"" . $row['BookID'] . "\">";
                 echo "<input type=\"submit\" value=\"reserve\" name=\"reserve\">";
@@ -110,7 +110,7 @@
                 echo "</td>";
                     
                 #Cover image
-                echo "<td>";
+                echo "<td class=\"dotted\">";
                 echo "<img ";
                 echo "src=\"images/covers/" . $row['ImageLocation'] . "\"";
                 # If the image isn't found in images/covers, replace image with none.jpg
@@ -125,7 +125,7 @@
                 if ($displayAdminColumns == "true")
                 {
                     # Book Holder
-                    echo "<td>";
+                    echo "<td class=\"dotted\">";
                     if ($row['userID'] == "NULL")
                     {
                         # Nobody has this book checked out
@@ -139,7 +139,7 @@
                     }
 
                     # Delete book button
-                    echo "<td>";
+                    echo "<td class=\"dotted\">";
                     echo "<form action=\"" . htmlspecialchars($_SERVER["PHP_SELF"]) . "\" method=\"POST\">";
                     echo "<input type=\"hidden\" name=\"bookID\" value=\"" . $row['BookID'] . "\">";
                     echo "<input type=\"submit\" value=\"delete\" name=\"delete\">";
