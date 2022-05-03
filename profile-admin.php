@@ -7,6 +7,7 @@
 	include_once ('includes/create-home-header.php');
 	include_once ('includes/create-hotbar.php');
 	include_once ('includes/start-session.php');
+	include_once ('includes/create-footer.php');
 
     if ( !isset($_SESSION['login_user']) && $_SESSION['login_admin'] == true )
     {
@@ -56,15 +57,26 @@
 					</tr>
 				</table>
 			</div>
+
+			<
+
         </form>
 	</div>
 	
 	<br>
+	<p> 
+		Need to add for a new hire? <a href="login-admin-form.php" class="link"> Use this link. </a>
+	</p>
+
+	<br>
+	<p> 
+		Need to add a new book entry? <a href="add-entry.php" class="link"> Use this link. </a>
+	</p>
 	
-	<div class="main-footer">
-		<p> Sharron Books | 2022 </p>
-		<p> Carson, Kylie, Joseph, Drew </p>
-	</div>
+	<?php
+		/* Footer at the end of the page that displays some basic website info */
+		create_footer();
+	?>
 	
 </body>
 </html> 

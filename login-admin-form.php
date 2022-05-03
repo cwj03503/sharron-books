@@ -31,26 +31,26 @@
 			/* Header bar at the top of the each page containing a series of links and the logo */
 			create_home_header();
 		?>
-
 		<div class="content">
 			<h3 style="text-decoration: underline;">Admin Login</h3>
 		
 			<form method="POST" action="../includes/login-admin.php">
 				<label><b>Username</b></label>
 				<input type="text" name="username" required>
-				
-				<label><b>Password</b></label>
-				<input type="password" name="password" required>
-				
-				<button type="submit">Login</button>
-			</form>
-		</div> 
-	</div>
+					
+					<label><b>Password</b></label>
+					<input type="password" name="password" required>
+					
+					<button type="submit">Login</button>
+				</form>
+			</div> 
 	
-	<?php
-		/* Footer at the end of the page that displays some basic website info */
-		create_footer();
-	?>
+		<?php
+			/* Footer at the end of the page that displays some basic website info */
+			create_footer();
+		?>
+
+	</div>
 	
 </body>
 </html> 

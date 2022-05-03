@@ -22,6 +22,7 @@
     Basic entry for adding books in to make our admins lives easier.
     -->
     <?php
+		if(!$_SESSION["login_admin"]) { header('Location:login-form.php'); }
         
         // Check if form has been submitted
         if (!empty($_POST))

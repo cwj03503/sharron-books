@@ -7,54 +7,14 @@
 	include_once ('includes/create-hotbar.php');
 	include_once ('includes/start-session.php');
     require_once ('includes/config.php');
+    include_once ('includes/create-footer.php');
+	include_once ('includes/create-books-display.php');
 
     if ( !isset($_SESSION['login_user']) && $_SESSION['login_admin'] == false )
     {
         header('Location:login-form.php');
         exit;
     } // if
-
-    // find user for checking their reserved books
-    $sql = $db->prepare("SELECT * FROM users WHERE Username = ?");
-    $sql->bind_param( "s", $_SESSION['login_username'] ); //binding to prevent sql injection
-    $sql->execute();
-    $result = $sql->get_result();
-    $count = $result->num_rows;
-    if ( $count != 0 ) // if count is not 0 there was a user with the name
-    {                
-        $error = "does not exist";
-    } // if
-    else 
-    {
-        // find the title of the first book
-        $book1 = $result -> fetch_column(6);
-        $book2 = $result -> fetch_column(7);
-
-        $sql = "SELECT Title FROM books WHERE BookId = $book1;";
-        $result = mysqli_query($db, $sql);
-        $count = mysqli_num_rows($result); 
-        if ( $count != 0 ) // if count is not 0 there was a user with the name
-        {                
-            $title1 = "no registered book";
-        } // if
-        else 
-        {
-            $title1 = mysqli_fetch_column( $result, 0 );
-        } // else
-        
-        // find the title of the second book
-        $sql = "SELECT Title FROM books WHERE BookId = $book2;";
-        $result = mysqli_query($db, $sql);
-        $count = mysqli_num_rows($result); 
-        if ( $count != 0 ) // if count is not 0 there was a user with the name
-        {                
-            $title2 = "no registered book";
-        } // if
-        else 
-        {
-            $title2 = mysqli_fetch_column( $result, 0 );
-        } // else
-    } // else
 ?>
 
 <!DOCTYPE html>
@@ -103,30 +63,10 @@
 	
 	<br>
 
-    <div class="content">
-        <h3 class = "heading" style="text-decoration: underline;"> Reserved List </h3>
-            <div>
-				<p>Your reserved books are below:</p>
-				<table>
-					<tr>
-						<td>Book 1:</td>
-						<td><?=$title1?></td>
-					</tr>
-                    <tr>
-						<td>Book 2:</td>
-						<td><?=$title2?></td>
-					</tr>
-				</table>
-			</div>
-        </form>
-	</div>
-    
-    <br>
-	
-	<div class="main-footer">
-		<p> Sharron Books | 2022 </p>
-		<p> Carson, Kylie, Joseph, Drew </p>
-	</div>
+	<?php
+		/* Footer at the end of the page that displays some basic website info */
+		create_footer();
+	?>
 	
 </body>
 </html> 

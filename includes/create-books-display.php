@@ -37,9 +37,9 @@
             echo "<th> Availability </th>";
             echo "<th>  </th>";
             echo "<th> Book Cover </th>";
+            echo "<th> Held by # of users</th>";
             if ($displayAdminColumns == "true")
             {
-                echo "<th> Held by </th>";
                 echo "<th> Delete </th>";
             }
             
@@ -119,6 +119,10 @@
                 echo "width=\"100\"";
                 echo "height=\"120\"";
                 echo ">";
+                echo "</td>";
+
+                echo "<td class=\"dotted\">";
+                # echo the result of counting reserved users on provided bookid
                 echo "</td>";
 
                 #Admin Only Columns
