@@ -48,11 +48,6 @@
 	<?php
 									
 		require('includes/config.php');
-
-		$Query = $db->Query(sprintf("UPDATE books 
-											  SET Reserved = 'N' 
-											  WHERE BookID = '%s'", 
-											  $db->escape_string($_POST['BookID'])));
 												
 		$Query = $db->Query(sprintf("DELETE FROM BookReserve 
 											  WHERE BookID = '%s'", 
