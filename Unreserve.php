@@ -58,7 +58,7 @@
 		echo "<div class='Form2'><h2>Check your account if the book has been unreserved.</h2></div>";
 		echo "<br>";
 		
-		echo "<div class='Form'><h3><a href='includes/login.html'>View your account</a> <br></h3></div>";
+		echo "<div class='Form'><h3><a href='profile.php'>View your account</a> <br></h3></div>";
 		echo "<div class='Form'><h3><a href='includes/logout.php'>Want to log out?</a> <br></h3></div>";
 
 	?>
