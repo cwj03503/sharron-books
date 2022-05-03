@@ -77,8 +77,7 @@
 		//Check if book isn't reserved.
 		$Query = $db->Query(sprintf("SELECT * 
 										FROM books
-										WHERE BookID = '%s'
-										AND Reserved = 'N'",
+										WHERE BookID = '%s',
 										$db->escape_string($_POST['BookID'])
 									 )
 							 );
@@ -100,13 +99,6 @@
 			echo "</div>";
 			exit;
 		}
-		
-		$Query = $db->Query(sprintf("UPDATE books 
-										SET Reserved = 'Y' 
-										WHERE BookID = '%s'",
-										$db->escape_string($_POST['BookID'])
-									 )
-							 );
 							 
 		if($Query) 
 		{
