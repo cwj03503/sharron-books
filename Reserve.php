@@ -39,6 +39,7 @@
 	<div class="backgroundfixReserve">
 		<div class="container">  
 			<div class="main">
+				<h1>Reserve a Book</h1>
 				<p class="btn-primary">The place where to reserve the books that you want.</p>
 			</div>
 		</div>
@@ -62,27 +63,12 @@
 			echo "</div>";
 			exit;
 		}
-
-		if(!isset($_SESSION['Username'])) 
-		{
-			echo "<br>";
-			echo "<div class='Form2'><h2>You're not logged in, please log in.</h2></div>";
-			echo "<br>";
-			echo "<div class='Form'><h3><a href='includes/login.php'>Log into your account</a> <br></h3></div>";
-			echo "<div class=\"clearfix\"></div>";
-			echo "<div  class=\"footer\">";
-	        echo "<div class=\"container\">";
-			echo "</div>";
-			echo "</div>";
-			exit;
-		}
-
 		
 		require('includes/config.php');
 		
 		//Check if book exists.
 		$Query = $db->Query(sprintf("SELECT * 
-										FROM books 
+										FROM sql/library.sql/books 
 										WHERE BookID = '%s'", 
 										$db->escape_string($_POST['BookID'])
 									 )
@@ -90,7 +76,7 @@
 		
 		//Check if book isn't reserved.
 		$Query = $db->Query(sprintf("SELECT * 
-										FROM books
+										FROM sql/library.sql/books
 										WHERE BookID = '%s'
 										AND Reserved = 'N'",
 										$db->escape_string($_POST['BookID'])
@@ -134,7 +120,7 @@
 		
 		//Record the reservation made.
 		$Query = $db->Query(sprintf("SELECT BookID 
-										From books 
+										From sql/library.sql/books 
 										WHERE BookID = '%s'",
 										$db->escape_string($_POST['BookID'])
 									 )
@@ -143,7 +129,7 @@
 		$Result = $Query->fetch_assoc();
 		
 		//Record the reservation made.
-		$Query = $db->Query(sprintf("INSERT INTO BookReserve(BookID, Username, ReservedDate) 
+		$Query = $db->Query(sprintf("INSERT INTO sql/library.sql/bookreserve(BookID, Username, ReservedDate) 
 										VALUES ('%s', '%s', '%s')", $Result['BookID'], $_SESSION['Username'],date('Y-m-d H:i:s')
 									 )
 							 );
