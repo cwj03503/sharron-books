@@ -68,7 +68,7 @@
 		
 		//Check if book exists.
 		$Query = $db->Query(sprintf("SELECT * 
-										FROM sql/library.sql/books 
+										FROM books 
 										WHERE BookID = '%s'", 
 										$db->escape_string($_POST['BookID'])
 									 )
@@ -76,7 +76,7 @@
 		
 		//Check if book isn't reserved.
 		$Query = $db->Query(sprintf("SELECT * 
-										FROM sql/library.sql/books
+										FROM books
 										WHERE BookID = '%s'
 										AND Reserved = 'N'",
 										$db->escape_string($_POST['BookID'])
@@ -120,7 +120,7 @@
 		
 		//Record the reservation made.
 		$Query = $db->Query(sprintf("SELECT BookID 
-										From sql/library.sql/books 
+										From books 
 										WHERE BookID = '%s'",
 										$db->escape_string($_POST['BookID'])
 									 )
