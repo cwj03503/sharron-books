@@ -112,7 +112,7 @@
 		$Result = $Query->fetch_assoc();
 		
 		//Record the reservation made.
-		$Query = $db->Query(sprintf("INSERT INTO sql/library.sql/bookreserve(BookID, Username, ReservedDate) 
+		$Query = $db->Query(sprintf("INSERT INTO bookreserve(BookID, Username, ReservedDate) 
 										VALUES ('%s', '%s', '%s')", $Result['BookID'], $_SESSION['Username'],date('Y-m-d H:i:s')
 									 )
 							 );
