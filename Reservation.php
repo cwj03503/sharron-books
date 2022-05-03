@@ -50,7 +50,6 @@
 	<br>
 	
 	<div class="Form2">
-	<h1 class="loginheader">Reserve A Book</h1>
 		<form action="Reserve.php" method="POST">
 		  ID of Book:<br>
 	 	 <input type="text" name="BookID" required><br>

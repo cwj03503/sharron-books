@@ -55,7 +55,7 @@
 			echo "<div class='Form2'><h2>You must enter a Book ID into the form.</h2></div>";
 			echo "<br>";
 			echo "<div class='Form'><h3><a href='Reservation.php'>Try again</a> <br></h3></div>";
-			echo "<div class='Form'><h3><a href='includes/logout.php'>Want to log out?</a> <br></h3></div>";
+			echo "<div class='Form'><h4><a href='includes/logout.php'>Want to log out?</a> <br></h4></div>";
 			echo "<div class=\"clearfix\"></div>";
 			echo "<div  class=\"footer\">";
 			echo "<div class=\"container\">";
@@ -64,50 +64,20 @@
 			exit;
 		}
 		
-			
-		//Check if session is good.
-		session_start();
-		
-
-		if(!isset($_SESSION['Username'])) 
-		{
-			echo "<br>";
-			echo "<div class='Form2'><h2>You're not logged in, please log in.</h2></div>";
-			echo "<br>";
-			echo "<div class='Form'><h3><a href='includes/login.php'>Log into your account</a> <br></h3></div>";
-			echo "<div class=\"clearfix\"></div>";
-			echo "<div  class=\"footer\">";
-	        echo "<div class=\"container\">";
-			echo "</div>";
-			echo "</div>";
-			exit;
-		}
-
-		
 		require('includes/config.php');
 		
 		//Check if book exists.
-		$Query = $Connection->Query(sprintf("SELECT * 
+		$Query = $db->Query(sprintf("SELECT * 
 										FROM books 
 										WHERE BookID = '%s'", 
-										$Connection->escape_string($_POST['BookID'])
-									 )
-							 );
-		
-		//Check if book isn't reserved.
-		$Query = $Connection->Query(sprintf("SELECT * 
-										FROM books
-										WHERE BookID = '%s'
-										AND Reserved = 'N'",
-										$Connection->escape_string($_POST['BookID'])
+										$db->escape_string($_POST['BookID'])
 									 )
 							 );
 				
 		if ($Query->num_rows == 0) 
 		{
 			echo "<br>";
-			echo "<div class='Form2'><h2>The book is already reserved by a member, try another book.</h2></div>";
-			echo "<div class='Form2'><h2>Or the Book ID you have entered didn't match.</h2></div>";
+			echo "<div class='Form2'><h2>The Book ID you have entered didn't match.</h2></div>";
 			echo "<br>";
 			
 			echo "<div class='Form'><h3><a href='Reservation.php'>Try again?</a> <br></h3></div>";
@@ -120,13 +90,6 @@
 			echo "</div>";
 			exit;
 		}
-		
-		$Query = $Connection->Query(sprintf("UPDATE books 
-										SET Reserved = 'Y' 
-										WHERE BookID = '%s'",
-										$Connection->escape_string($_POST['BookID'])
-									 )
-							 );
 							 
 		if($Query) 
 		{
@@ -134,25 +97,21 @@
 			echo "<div class='Form2'><h2>The book you have selected was reserved successfully.</h2></div>";
 			echo "<br><br>";
 			
-			echo "<div class='Form'><h3><a href='includes/login.php'>View your account</a> <br></h3></div>";
+			echo "<div class='Form'><h3><a href='profile.php'>View your account</a> <br></h3></div>";
 			echo "<div class='Form'><h3><a href='includes/logout.php'>Want to log out?</a> <br></h3></div>";
 		} 
 		
 		//Record the reservation made.
-		$Query = $Connection->Query(sprintf("SELECT BookID 
+		$Query = $db->Query(sprintf("SELECT BookID 
 										From books 
 										WHERE BookID = '%s'",
-										$Connection->escape_string($_POST['BookID'])
+										$db->escape_string($_POST['BookID'])
 									 )
 							 );
 							 
 		$Result = $Query->fetch_assoc();
 		
-		//Record the reservation made.
-		$Query = $Connection->Query(sprintf("INSERT INTO BookReserve(BookID, Username, ReservedDate) 
-										VALUES ('%s', '%s', '%s')", $Result['BookID'], $_SESSION['Username'],date('Y-m-d H:i:s')
-									 )
-							 );
+		
 	?>
 	
 	<br><br>

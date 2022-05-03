@@ -46,20 +46,12 @@
 	</div>
 				
 	<?php
-
-		//Check if logged in.
-		session_start();
 									
 		require('includes/config.php');
-
-		$Query = $Connection->Query(sprintf("UPDATE books 
-											  SET Reserved = 'N' 
-											  WHERE BookID = '%s'", 
-											  $Connection->escape_string($_POST['BookID'])));
 												
-		$Query = $Connection->Query(sprintf("DELETE FROM BookReserve 
+		$Query = $db->Query(sprintf("DELETE FROM BookReserve 
 											  WHERE BookID = '%s'", 
-											  $Connection->escape_string($_POST['BookID'])));
+											  $db->escape_string($_POST['BookID'])));
 											
 		echo "<br>";
 		echo "<div class='Form2'><h2>Book has been unreserved if code was correct.</h2></div>";
