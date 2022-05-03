@@ -49,7 +49,7 @@
 									
 		require('includes/config.php');
 												
-		$Query = $db->Query(sprintf("DELETE FROM BookReserve 
+		$Query = $db->Query(sprintf("DELETE FROM bookreverse 
 											  WHERE BookID = '%s'", 
 											  $db->escape_string($_POST['BookID'])));
 											
