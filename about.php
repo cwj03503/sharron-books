@@ -1,6 +1,7 @@
 <!--
 	Author - Carson Jones
-	Displays some information about the website
+	Displays some information about the website.
+	This page doesn't interact with the database at all.
 -->
 
 <?php
@@ -36,9 +37,11 @@
 			
 			<h3 style="text-decoration: underline;"> About Sharron Books</h3>
 			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tortor vitae purus faucibus ornare suspendisse sed nisi. Scelerisque fermentum dui faucibus in ornare quam viverra. Lorem ipsum dolor sit amet consectetur adipiscing elit ut. Nulla malesuada pellentesque elit eget gravida. Quis ipsum suspendisse ultrices gravida. Diam ut venenatis tellus in metus vulputate. Magna etiam tempor orci eu lobortis elementum nibh. <br>
+				Sharron Books is a fictional library created for Dr. Mario's Web Programming class by Carson Jones, Kylie Sengpiel, Andrew Jenkins, and Joseph Zheng. Carson and Drew did much of the PHP and HTML, Kylie handled the visuals of the website including most of the CSS, and Joseph handled reservation and Javascript. It's main feature is a dynamic database of books and users which interact with eachother through the website's interface. The catalog page displays a list of search results from the database, which can be filtered and modified by the catalog form. Registered users will be able to select any of the books on this page and view more information on them or reserve them.
 				<br>
-				Erat nam at lectus urna. In eu mi bibendum neque. Ipsum faucibus vitae aliquet nec ullamcorper. Aliquet nec ullamcorper sit amet risus nullam. Sapien et ligula ullamcorper malesuada proin libero nunc. Mattis ullamcorper velit sed ullamcorper morbi. Blandit cursus risus at ultrices mi tempus imperdiet. Tempor nec feugiat nisl pretium. Et ultrices neque ornare aenean euismod elementum nisi quis. Mauris rhoncus aenean vel elit. Aliquet sagittis id consectetur purus ut faucibus pulvinar elementum integer. Condimentum mattis pellentesque id nibh tortor id.
+				This website features a multi-level login system which allows for administrators and ordinary users to have access to different features. As an admin, you can add and delete from the books table, and view who has each book reserved. Ordinary users are able to reserve books, unlike admins.
+				<br>
+				
 			</p>
 		</div>
 	</div>

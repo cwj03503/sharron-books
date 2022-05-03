@@ -54,7 +54,7 @@
 				<!-- username -->
 				<label for "username"><b>Please enter a username</b></label>
 				<input type="text" name="username" required minlength="3" maxlength="24"
-				pattern="^[a-z0-9._%=-]+$" title="Username must be between 3 and 24 characters">
+				pattern="^[a-zA-Z0-9._%=-]+$" title="Username must be between 3 and 24 characters and contain no special characters or spaces">
 				<br><br>
 				<!-- password -->
 				<label for "password"><b>Please enter a valid password</b></label>
