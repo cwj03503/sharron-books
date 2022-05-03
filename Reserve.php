@@ -95,7 +95,7 @@
 		{
 			echo "<br>";
 			echo "<div class='Form2'><h2>The book you have selected was reserved successfully.</h2></div>";
-			echo "<br><br>";
+			echo "<br>";
 			
 			echo "<div class='Form'><h3><a href='profile.php'>View your account</a> <br></h3></div>";
 			echo "<div class='Form'><h3><a href='includes/logout.php'>Want to log out?</a> <br></h3></div>";
