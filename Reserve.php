@@ -55,7 +55,7 @@
 			echo "<div class='Form2'><h2>You must enter a Book ID into the form.</h2></div>";
 			echo "<br>";
 			echo "<div class='Form'><h3><a href='Reservation.php'>Try again</a> <br></h3></div>";
-			echo "<div class='Form'><h3><a href='includes/logout.php'>Want to log out?</a> <br></h3></div>";
+			echo "<div class='Form'><h4><a href='includes/logout.php'>Want to log out?</a> <br></h4></div>";
 			echo "<div class=\"clearfix\"></div>";
 			echo "<div  class=\"footer\">";
 			echo "<div class=\"container\">";
@@ -111,11 +111,7 @@
 							 
 		$Result = $Query->fetch_assoc();
 		
-		//Record the reservation made.
-		$Query = $db->Query(sprintf("INSERT INTO bookreserve(BookID, Username, ReservedDate) 
-										VALUES ('%s', '%s', '%s')", $Result['BookID'], $_SESSION['Username'],date('Y-m-d H:i:s')
-									 )
-							 );
+		
 	?>
 	
 	<br><br>
