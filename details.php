@@ -39,6 +39,22 @@
 
 		<div class="content">
 			<?php
+
+			if ($_SERVER["REQUEST_METHOD"] == "POST")
+			{
+				# Handle deletion
+				if (isset($_POST["delete"]))
+				{
+					if (delete_book($_POST("BookID")) == True)
+					{
+						header('location:catalog.php');
+					}
+					else
+					{
+						echo "<p class=\"alert error\" Failed to remove entry from database. <\p> <br>";
+					}
+				}
+			} // if
 		
 				// Set form variables
 				if (isset($_GET["bookID"]))
@@ -89,6 +105,26 @@
 					echo "Year of original publication: " . $yearPubbed . "<br>";
 					echo "Barcode Number: " . $bookID . "<br>";
 					echo "</p>";
+
+					if (isset($_SESSION['login_admin']) && $_SESSION['login_admin'] == "true")
+					{
+						echo "<form action=\"" . htmlspecialchars($_SERVER["PHP_SELF"]) . "\" method=\"POST\">";
+						echo "<input type=\"hidden\" name=\"bookID\" value=\"" . $bookID . "\">";
+						echo "<input type=\"submit\" value=\"delete\" name=\"delete\">";
+						echo "</form>";
+
+						$resCheck = $db->prepare("SELECT UserID FROM bookreserve WHERE BookID = ?");
+						$resCheck->bind_param("d", $bookID);
+                    	$resCheck->execute();
+                    	$result = $resCheck->get_result(); 
+
+						echo "<p> Users with current reservations: ";
+						while ($row =$result->fetch_assoc())
+						{
+							echo $row['UserID'];
+						}
+						echo "</p>";
+					}
 
 				}
 				else

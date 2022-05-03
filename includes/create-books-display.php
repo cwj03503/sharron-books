@@ -123,9 +123,11 @@
 
                 echo "<td class=\"dotted\">";
                 # echo the result of counting reserved users on provided bookid
-                    $sql2 = "SELECT UserId FROM bookreserve WHERE BookID = $row['BookID'];";
-                    $result = mysqli_query($db, $sql2);   
-                    $resultCheck = mysqli_num_rows($result);
+                    $stmt = $db->prepare("SELECT UserID FROM bookreserve WHERE BookID=?");
+                    $stmt->bind_param("d", $row['BookID']);
+                    $stmt->execute();
+                    $result = $stmt->get_result(); 
+                    $resultCheck = $result->num_rows;
                     echo $resultCheck
                 echo "</td>";
 
