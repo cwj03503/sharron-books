@@ -12,6 +12,8 @@
     include_once ('includes/create-home-header.php');
 	include_once ('includes/create-footer.php');
     require_once ('includes/start-session.php');
+	require_once ('includes/cookie-login.php');
+
 ?>
 
 

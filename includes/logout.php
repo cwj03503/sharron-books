@@ -10,6 +10,9 @@
     }
    
     session_destroy(); // close
-    // setcookie("user", "", time() - 3600 );
+    if(isset($_COOKIE['user']))
+    {
+        setcookie("user", "", time() - (30*24*3600) );
+    } // if
     header("location: ../catalog.php"); // go to index page
 ?>

@@ -43,6 +43,10 @@
                     $_SESSION['login_admin'] = "false"; // user-status
                     $_SESSION['login_email'] = $email;
 					echo "about to redirect: ";
+                    if( isset($_POST['cookies']))
+                    {
+                        setcookie("user", $uID, time() + (30*24*3600) );
+                    } // if 
                     header("location:../profile.php"); // redirect only temporary
                 } // if
 				else
