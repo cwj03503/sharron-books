@@ -75,7 +75,7 @@
 					echo ">";
 
 					# Reservation button
-					echo "<form action=\"reservation.php\" method=\"GET\">";
+					echo "<form action=\"reserve.php\" method=\"POST\">";
 					echo "<input type=\"hidden\" name=\"bookID\" value=\"" . $bookID . "\">";
 					echo "<input type=\"submit\" value=\"reserve\" name=\"reserve\">";
 					echo "</form>";

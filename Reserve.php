@@ -48,6 +48,8 @@
 	<!-- Start of PHP -->
 	<?php
 	
+		require('includes/config.php');
+
 		//Check to see if the user entered something.
 		if($_SERVER['REQUEST_METHOD'] != 'POST' || empty($_POST)) 
 		{
@@ -64,13 +66,11 @@
 			exit;
 		}
 		
-		require('includes/config.php');
-		
 		//Check if book exists.
 		$Query = $db->Query(sprintf("SELECT * 
 										FROM books 
 										WHERE BookID = '%s'", 
-										$db->escape_string($_POST['BookID'])
+										$db->escape_string($_POST['bookID'])
 									 )
 							 );
 				
@@ -105,7 +105,7 @@
 		$Query = $db->Query(sprintf("SELECT BookID 
 										From books 
 										WHERE BookID = '%s'",
-										$db->escape_string($_POST['BookID'])
+										$db->escape_string($_POST['bookID'])
 									 )
 							 );
 							 
