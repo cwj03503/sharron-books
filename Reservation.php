@@ -41,7 +41,6 @@
 	<div class="backgroundfixReserve">
 		<div class="container">  
 			<div class="main">
-				<h1>Reserve a Book</h1>
 				<p class="btn-primary">The place where to reserve the books that you want.</p>
 			</div>
 		</div>
