@@ -1,6 +1,7 @@
 <!-- 
     Author - Drew Jenkins  Created Mar 28,22
-    Form to process the user's login and begin their session
+    Form to process the user's login and begin their session.
+	This page READS from the users table.
 -->
 
 <?php
@@ -45,6 +46,7 @@
 			<p> 
 				Don't have an account? <a href="create-user-account-form.php" class="link"> Create one. </a>
 			</p>
+			<a href="login-admin-form.php"> Admin Login </a>
 		</div> 
 	</div>
 	

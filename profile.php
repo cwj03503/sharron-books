@@ -6,6 +6,7 @@
 	include_once ('includes/create-home-header.php');
 	include_once ('includes/create-hotbar.php');
 	include_once ('includes/start-session.php');
+    require_once ('includes/config.php');
 
     if ( !isset($_SESSION['login_user']) && $_SESSION['login_admin'] == false )
     {

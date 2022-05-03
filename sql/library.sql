@@ -45,11 +45,6 @@ INSERT INTO `administrators` (`Username`, `Password`, `Email`, `UserID`, `FirstN
 
 -- --------------------------------------------------------
 
-CREATE TABLE CategoryTable
-(
-	CategoryID int  PRIMARY KEY,
-);
-
 --
 -- Table structure for table `books`
 --
@@ -61,27 +56,10 @@ CREATE TABLE `books` (
   `Genre` varchar(255) NOT NULL,
   `YearPubbed` int(4) NOT NULL,
   `Description` text DEFAULT NULL,
-  `BookID` decimal(13,0) PRIMARY KEY NOT NULL,
+  `BookID` decimal(13,0) NOT NULL,
   `CheckedOut` tinyint(1) NOT NULL DEFAULT 0,
   `ImageLocation` varchar(255) DEFAULT NULL
-	
-   FOREIGN KEY (Genre) REFERENCES CategoryTable(CategoryID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Table structure for table `BookReserve`
---
-
-CREATE TABLE BookReserve
-(
-	`BookID` decimal(13,0) NOT NULL,
-	`Username` varchar(255) NOT NULL,
-	`ReservedDate` DATE,
-	
-	PRIMARY KEY (BookID, Username),
-	FOREIGN KEY (BookID) REFERENCES books(BookID),
-	FOREIGN KEY (Username) REFERENCES users(Username)
-);
 
 --
 -- Dumping data for table `books`
@@ -121,7 +99,7 @@ CREATE TABLE `favorites` (
 --
 
 CREATE TABLE `users` (
-  `Username` varchar(255) PRIMARY KEY NOT NULL,
+  `Username` varchar(255) NOT NULL,
   `Password` varchar(255) NOT NULL,
   `Email` varchar(255) NOT NULL,
   `UserID` int(9) NOT NULL,

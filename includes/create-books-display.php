@@ -124,20 +124,6 @@
                 #Admin Only Columns
                 if ($displayAdminColumns == "true")
                 {
-                    # Book Holder
-                    echo "<td class=\"dotted\">";
-                    if ($row['userID'] == "NULL")
-                    {
-                        # Nobody has this book checked out
-                        echo "<p> None (Not checked out) </p>"; 
-                    }
-                    else
-                    {
-                        $users = mysqli_query($db, "SELECT * FROM users HAVING UserID=\"" . $row['userID'] . "\";");
-                        $userRow = mysqli_fetch_assoc($result);
-                        echo "<p> " . $userRow["FirstName"] . " " . $userRow["LastName"] . "</p>"; 
-                    }
-
                     # Delete book button
                     echo "<td class=\"dotted\">";
                     echo "<form action=\"" . htmlspecialchars($_SERVER["PHP_SELF"]) . "\" method=\"POST\">";
