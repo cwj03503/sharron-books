@@ -37,7 +37,7 @@
             echo "<th> Availability </th>";
             echo "<th>  </th>";
             echo "<th> Book Cover </th>";
-            echo "<th> Held by # of users</th>";
+            echo "<th> Reserved by # of users</th>";
             if ($displayAdminColumns == "true")
             {
                 echo "<th> Delete </th>";
@@ -123,6 +123,10 @@
 
                 echo "<td class=\"dotted\">";
                 # echo the result of counting reserved users on provided bookid
+                    $sql = "SELECT UserId FROM bookreserve WHERE BookID = $row['BookID']";
+                    $result = mysqli_query($db, $sql);   
+                    $resultCheck = mysqli_num_rows($result);
+                    echo $resultCheck
                 echo "</td>";
 
                 #Admin Only Columns
