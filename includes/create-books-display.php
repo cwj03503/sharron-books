@@ -95,7 +95,7 @@
                 #Buttons
                 #Contains a hidden form that will send info to reserve.php
                 echo "<td class=\"dotted\">";
-                echo "<form action=\"reserve.php\" method=\"GET\">";
+                echo "<form action=\"reservation.php\" method=\"GET\">";
                 echo "<input type=\"hidden\" name=\"bookID\" value=\"" . $row['BookID'] . "\">";
                 echo "<input type=\"submit\" value=\"reserve\" name=\"reserve\">";
                 echo "</form>";
