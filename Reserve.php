@@ -39,7 +39,6 @@
 	<div class="backgroundfixReserve">
 		<div class="container">  
 			<div class="main">
-				<h1>Reserve a Book</h1>
 				<p class="btn-primary">The place where to reserve the books that you want.</p>
 			</div>
 		</div>
@@ -63,11 +62,6 @@
 			echo "</div>";
 			exit;
 		}
-		
-			
-		//Check if session is good.
-		session_start();
-		
 
 		if(!isset($_SESSION['Username'])) 
 		{
@@ -87,19 +81,19 @@
 		require('includes/config.php');
 		
 		//Check if book exists.
-		$Query = $Connection->Query(sprintf("SELECT * 
+		$Query = $db->Query(sprintf("SELECT * 
 										FROM books 
 										WHERE BookID = '%s'", 
-										$Connection->escape_string($_POST['BookID'])
+										$db->escape_string($_POST['BookID'])
 									 )
 							 );
 		
 		//Check if book isn't reserved.
-		$Query = $Connection->Query(sprintf("SELECT * 
+		$Query = $db->Query(sprintf("SELECT * 
 										FROM books
 										WHERE BookID = '%s'
 										AND Reserved = 'N'",
-										$Connection->escape_string($_POST['BookID'])
+										$db->escape_string($_POST['BookID'])
 									 )
 							 );
 				
@@ -121,10 +115,10 @@
 			exit;
 		}
 		
-		$Query = $Connection->Query(sprintf("UPDATE books 
+		$Query = $db->Query(sprintf("UPDATE books 
 										SET Reserved = 'Y' 
 										WHERE BookID = '%s'",
-										$Connection->escape_string($_POST['BookID'])
+										$db->escape_string($_POST['BookID'])
 									 )
 							 );
 							 
@@ -139,17 +133,17 @@
 		} 
 		
 		//Record the reservation made.
-		$Query = $Connection->Query(sprintf("SELECT BookID 
+		$Query = $db->Query(sprintf("SELECT BookID 
 										From books 
 										WHERE BookID = '%s'",
-										$Connection->escape_string($_POST['BookID'])
+										$db->escape_string($_POST['BookID'])
 									 )
 							 );
 							 
 		$Result = $Query->fetch_assoc();
 		
 		//Record the reservation made.
-		$Query = $Connection->Query(sprintf("INSERT INTO BookReserve(BookID, Username, ReservedDate) 
+		$Query = $db->Query(sprintf("INSERT INTO BookReserve(BookID, Username, ReservedDate) 
 										VALUES ('%s', '%s', '%s')", $Result['BookID'], $_SESSION['Username'],date('Y-m-d H:i:s')
 									 )
 							 );
