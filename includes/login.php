@@ -28,14 +28,13 @@
                 $check = $ver['Password']; // pull password from db
                 if ( password_verify( $passIn, $check ) ) // check for correctness
                 {
-					echo "password correct";
                     // extract user information
                     $uID = $ver['UserID']; 
                     $username = $ver['Username']; 
                     $firstname = $ver['FirstName']; 
                     $lastname = $ver['LastName'];
                     $email = $ver['Email']; 
-                    echo "database read to variables";
+                    
                     // set session varibles to extracted database information
                     $_SESSION['login_username'] = $username; 
                     $_SESSION['login_user'] = $uID; 
