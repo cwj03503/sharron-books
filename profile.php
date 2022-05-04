@@ -63,6 +63,59 @@
 	
 	<br>
 
+	<div class="content">
+	    
+	    <?php
+		if(isset($_SESSION['login_user']))
+		{
+			$Username = $_SESSION['login_firstname'];
+			echo "<br><br>";
+			echo "<div class='Form'><h1>Hello " . $Username . "<br></h1></div>";
+			echo "<div class='Form'><h2> Reserved List </h2>";
+			echo "<p>Your reserved books are below:</p>";
+			echo "<br><br>";
+			
+			$Query = $db->Query(sprintf("SELECT books.BookID, books.Title 
+											FROM bookreserve 
+											INNER JOIN books 
+											ON bookreserve.BookID=books.BookID 
+											WHERE bookreserve.UserID = '%s'", $_SESSION['login_user']));
+			
+			if ($Query->num_rows == 0) 
+			{
+				echo "<div class='Form2'><h2>No books have been reserved.</h2></div>"; 
+			} // if
+			
+			
+			//If books match with what the user wants, then display the results.
+			while($Row = mysqli_fetch_array($Query))
+			{
+				echo "<table border=\"2\"align=\"center\"width=\"600\">";
+				echo("</td><td>");
+				echo "<div class=\"Form2\">";
+				echo '<br /> Book Title: ' .$Row['Title'];
+				echo '<br /> BookID:       ' .$Row['BookID'];    
+				echo '<br /> <br />';
+				echo("</tr>\n");
+				echo "</div>";
+				echo "<br>";
+			} // while
+			echo "</table>\n";
+			
+			echo "</select><br><br>";
+			
+			echo "<div class=\"Form2\">";
+			echo "<form action=\"Unreserve.php\" method=\"POST\">";
+			echo "The Book's ID:<br>";
+			echo "<input type=\"text\" name=\"BookID\" required ><br>";
+			echo "<input type=\"submit\" value=\"Submit\">";
+			echo "</form>";
+			echo "</div>";
+		} // if
+	?>
+        </form>
+	</div>
+	
 	<p> 
 		Ready to logout? <a href="includes/logout.php" class="link"> Click here. </a>
 	</p>
