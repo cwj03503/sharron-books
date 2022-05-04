@@ -126,9 +126,9 @@
                     $stmt = $db->prepare("SELECT UserID FROM bookreserve WHERE BookID=?");
                     $stmt->bind_param("d", $row['BookID']);
                     $stmt->execute();
-                    $result = $stmt->get_result(); 
-                    $resultCheck = $result->num_rows;
-                    echo $resultCheck;
+                    $reservedResult = $stmt->get_result(); 
+                    $numberReserved = $reservedResult->num_rows;
+                    echo $numberReserved;
                 echo "</td>";
 
                 #Admin Only Columns
