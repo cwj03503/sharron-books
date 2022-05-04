@@ -106,7 +106,7 @@
 			
 			echo "<div class=\"Form2\">";
 			echo "<form action=\"Unreserve.php\" method=\"POST\">";
-			echo "The Book's ID:<br>";
+			echo "To unreserve a book, please enter the reserved book's ID:<br>";
 			echo "<input type=\"text\" name=\"BookID\" required ><br>";
 			echo "<input type=\"submit\" value=\"Submit\">";
 			echo "</form>";
