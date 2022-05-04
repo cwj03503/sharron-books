@@ -40,7 +40,9 @@
 		<div class="container">  
 			<div class="main">
 				<h1>Unreserved</h1>
-				<p class="btn-primary">Welcome to your profile page, here you can check the books you have reserved.</p>
+				<?php
+				echo "<div class='Form2'><h2>Book has been unreserved if code was correct.</h2></div>";
+				?>
 			</div>
 		</div>
 	</div>
@@ -49,12 +51,11 @@
 									
 		require('includes/config.php');
 												
-		$Query = $db->Query(sprintf("DELETE FROM bookreverse 
-											  WHERE BookID = '%s'", 
-											  $db->escape_string($_POST['BookID'])));
+		$Query = $db->Query(sprintf("DELETE FROM bookreserve 
+										WHERE `bookreserve`.`BookID` = '%s'", 
+										$db->escape_string($_POST['BookID'])));
 											
 		echo "<br>";
-		echo "<div class='Form2'><h2>Book has been unreserved if code was correct.</h2></div>";
 		echo "<div class='Form2'><h2>Check your account if the book has been unreserved.</h2></div>";
 		echo "<br>";
 		
