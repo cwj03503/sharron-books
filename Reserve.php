@@ -37,95 +37,77 @@
 			create_home_header();
 		?>
 	
-		<div class="container">  
-			<div class="main">
-				<h1>Reserve a Book</h1>
-				<p class="btn-primary">The place where to reserve the books that you want.</p>
-			</div>
-		</div>
-	
-	<!-- Start of PHP -->
-	<?php
-		
-		if(!isset($_SESSION['login_user'])) 
-		{
-			echo "<br>";
-			echo "<div class='Form2'><h2>You're not logged in, please log in.</h2></div>";
-			echo "<br>";
-			echo "<div class='Form'><h3><a href='login-form.php'>Log into your account</a> <br></h3></div>";
-			echo "<div class=\"clearfix\"></div>";
-			exit;
-   		} // if
-
-		//Check to see if the user entered something.
-		if($_SERVER['REQUEST_METHOD'] != 'POST' || empty($_POST)) 
-		{
-			echo "<br>";
-			echo "<div class='Form2'><h2>You must enter a Book ID into the form.</h2></div>";
-			echo "<br>";
-			echo "<div class='Form'><h3><a href='Reservation.php'>Try again</a> <br></h3></div>";
-			echo "<div class='Form'><h4><a href='includes/logout.php'>Want to log out?</a> <br></h4></div>";
-			echo "<div class=\"clearfix\"></div>";
-			echo "<div  class=\"footer\">";
-			echo "<div class=\"container\">";
-			echo "</div>";
-			echo "</div>";
-			exit;
-		}
-		
-		
-		//Check if book exists.
-		$Query = $db->Query(sprintf("SELECT * 
-										FROM books 
-										WHERE BookID = '%s'", 
-										$db->escape_string($_POST['bookID'])
-									 )
-							 );
+		<div class="content">
+			<!-- Start of PHP -->
+			<?php
 				
-		if ($Query->num_rows == 0) 
-		{
-			echo "<br>";
-			echo "<div class='Form2'><h2>The Book ID you have entered didn't match.</h2></div>";
-			echo "<br>";
-			
-			echo "<div class='Form'><h3><a href='Reservation.php'>Try again?</a> <br></h3></div>";
-			echo "<div class='Form'><h3><a href='includes/logout.php'>Want to log out?</a> <br></h3></div>";
-			
-			echo "<div class=\"clearfix\"></div>";
-			exit;
-		}
-							 
-		if($Query) 
-		{
-			echo "<br>";
-			echo "<div class='Form2'><h2>The book you have selected was reserved successfully.</h2></div>";
-			echo "<br>";
-			
-			echo "<div class='Form'><h3><a href='profile.php'>View your account</a> <br></h3></div>";
-			echo "<div class='Form'><h3><a href='includes/logout.php'>Want to log out?</a> <br></h3></div>";
-		} 
-		
-		//Record the reservation made.
-		$Query = $db->Query(sprintf("SELECT BookID 
-										From books 
-										WHERE BookID = '%s'",
-										$db->escape_string($_POST['bookID'])
-									 )
-							 );
-		$Result = $Query->fetch_assoc();
-		
-		$Query = $db->Query(sprintf("INSERT INTO bookreserve(BookID, UserID, ReservedDate) 
-					VALUES ('%s', '%s', '%s')", $Result['BookID'], $_SESSION['login_user'],date('Y-m-d H:i:s')
-						    )
-					);
-	?>
-	
-	<br><br>
+				if(!isset($_SESSION['login_user'])) 
+				{
+					echo  "<h2> You must be logged in to view this page </h2>";
+					echo "<p> Log in <a href=\"login-form.php\"> here </a>.";
+					exit;
+				} // if
 
-    	<?php
-		/* Footer at the end of the page that displays some basic website info */
-		create_footer();
-	?>
+				//Check to see if the user entered something.
+				if($_SERVER['REQUEST_METHOD'] != 'POST' || empty($_POST)) 
+				{
+					echo "<h3> An error has occured </h3>";
+					echo "<p> Please return to the previous page to try again </p>" ;
+					exit;
+				}
+				
+				//Check if book exists.
+				$Query = $db->Query(sprintf("SELECT * 
+												FROM books 
+												WHERE BookID = '%s'", 
+												$db->escape_string($_POST['bookID'])
+											)
+									);
+						
+				if ($Query->num_rows < 1) 
+				{
+					echo "<h3> The book you selected is no longer available. <\h3>";
+					exit;
+				}
+									
+				if($Query) 
+				{
+					// Check if the user has already made this reservation:
+					$reservationCheckQuery = $db->Query(sprintf("SELECT * FROM bookreserve WHERE BookID='%s' HAVING UserID='%s'", $_POST['bookID'], $_SESSION['login_user']));
+					if ($reservationCheckQuery->num_rows > 0)
+					{
+						// Reservation has already been made
+						echo "<h3> Book Reservation Unsuccessful </h3>";
+						echo "<p> The book you selected ( ID number: " . $_POST['bookID'] . " ) Has already been reserved by you. </p>";
+						echo "<p> Click <a href='profile.php'> here </a> to view your active reservations. </p>";
+					}
+					else
+					{
+						// Make the reservation.
+						$Query = $db->Query(sprintf("SELECT BookID 
+									From books 
+									WHERE BookID = '%s'",
+									$db->escape_string($_POST['bookID'])
+									));
+						$Result = $Query->fetch_assoc();
+						$Query = $db->Query(sprintf("INSERT INTO bookreserve(BookID, UserID, ReservedDate) 
+													VALUES ('%s', '%s', '%s')", $Result['BookID'], $_SESSION['login_user'],date('Y-m-d H:i:s')
+													));
+
+						// Display success message
+						echo "<h3> The book you selected ( ID number: " . $_POST['bookID'] . " ) was sucessfully reserved. </h3>";
+						echo "<p> Click <a href='profile.php'> here </a> to view your active reservations  </p>";
+					}
+					
+				}
+			?>
+		</div>
+	</div>
+
+<?php
+/* Footer at the end of the page that displays some basic website info */
+create_footer();
+?>
 	
 </body>
 </html>
