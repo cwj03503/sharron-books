@@ -10,6 +10,7 @@
 	include_once ('includes/create-home-header.php');
 	include_once ('includes/create-hotbar.php');
 	include_once ('includes/create-footer.php');
+	require_once ('includes/config.php');
 	include_once ('includes/start-session.php');
 ?>
 
@@ -36,19 +37,24 @@
 			create_home_header();
 		?>
 	
-	<div class="backgroundfixReserve">
 		<div class="container">  
 			<div class="main">
 				<h1>Reserve a Book</h1>
 				<p class="btn-primary">The place where to reserve the books that you want.</p>
 			</div>
 		</div>
-	</div>
 	
 	<!-- Start of PHP -->
 	<?php
-	
-		require('includes/config.php');
+		
+		if(!isset($_SESSION['login_user'])) 
+		{
+			echo "<br>";
+			echo "<div class='Form2'><h2>You're not logged in, please log in.</h2></div>";
+			echo "<br>";
+			echo "<div class='Form'><h3><a href='login-form.php'>Log into your account</a> <br></h3></div>";
+			echo "<div class=\"clearfix\"></div>";
+   		} // if
 
 		//Check to see if the user entered something.
 		if($_SERVER['REQUEST_METHOD'] != 'POST' || empty($_POST)) 
@@ -65,6 +71,7 @@
 			echo "</div>";
 			exit;
 		}
+		
 		
 		//Check if book exists.
 		$Query = $db->Query(sprintf("SELECT * 
@@ -84,10 +91,6 @@
 			echo "<div class='Form'><h3><a href='includes/logout.php'>Want to log out?</a> <br></h3></div>";
 			
 			echo "<div class=\"clearfix\"></div>";
-			echo "<div  class=\"footer\">";
-			echo "<div class=\"container\">";
-			echo "</div>";
-			echo "</div>";
 			exit;
 		}
 							 
@@ -108,10 +111,12 @@
 										$db->escape_string($_POST['bookID'])
 									 )
 							 );
-							 
 		$Result = $Query->fetch_assoc();
 		
-		
+		$Query = $db->Query(sprintf("INSERT INTO bookreserve(BookID, UserID, ReservedDate) 
+					VALUES ('%s', '%s', '%s')", $Result['BookID'], $_SESSION['login_user'],date('Y-m-d H:i:s')
+						    )
+					);
 	?>
 	
 	<br><br>
