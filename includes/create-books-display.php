@@ -128,7 +128,7 @@
                     $stmt->execute();
                     $result = $stmt->get_result(); 
                     $resultCheck = $result->num_rows;
-                    echo $resultCheck
+                    echo $resultCheck;
                 echo "</td>";
 
                 #Admin Only Columns
