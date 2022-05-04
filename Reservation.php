@@ -13,6 +13,8 @@
 	include_once ('includes/create-hotbar.php');
 	include_once ('includes/create-footer.php');
 	include_once ('includes/start-session.php');
+	require_once ('includes/cookie-login.php');
+
 ?>
 
 <!DOCTYPE html>

@@ -39,9 +39,17 @@
 				<br><br>
 				<label for="password"><b>Password</b></label>
 				<input type="password" name="password" required>
-				<br><br>
+				<br>
+				<input type="checkbox" id="cookies" name="cookies" value="true">
+  				<label for="cookies"> Enable Cookies</label><br>
+				<br>
 				<button type="submit">Login</button>
 			</form>
+
+			<p> 
+				Need to reset password? <a href="includes/update-later.php" class="link"> Click here </a>
+			</p>
+			<br>
 
 			<p> 
 				Don't have an account? <a href="create-user-account-form.php" class="link"> Create one. </a>

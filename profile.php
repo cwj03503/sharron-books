@@ -63,6 +63,12 @@
 	
 	<br>
 
+	<p> 
+		Ready to logout? <a href="includes/logout.php" class="link"> Click here. </a>
+	</p>
+
+	<br>
+
 	<?php
 		/* Footer at the end of the page that displays some basic website info */
 		create_footer();

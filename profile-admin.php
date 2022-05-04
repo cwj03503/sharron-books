@@ -72,6 +72,12 @@
 	<p> 
 		Need to add a new book entry? <a href="add-entry.php" class="link"> Use this link. </a>
 	</p>
+
+	<p> 
+		Ready to logout? <a href="includes/logout.php" class="link"> Click here. </a>
+	</p>
+
+	<br>
 	
 	<?php
 		/* Footer at the end of the page that displays some basic website info */
