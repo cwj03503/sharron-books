@@ -72,12 +72,13 @@
 			/* Header bar at the top of the each page containing a series of links and the logo */
 			create_home_header();
 		?>
-	
-		<h3 class="heading">Add an Entry</h3>
-		
-		<p> To generate a new entry in the library database, please enter all required information, then click "submit". For "Book Cover Image" Please provide an image URL or a location on the filesystem.</p>
 		
 		<div class="content">
+
+			<h3 class="heading">Add an Entry</h3>
+			
+			<p> To generate a new entry in the library database, please enter all required information, then click "submit". For "Book Cover Image" Please provide an image URL or a location on the filesystem.</p>
+
 			<!-- This form will be used to add an entry to the books table -->
 			<form method="POST" action=<?php echo "\"" . htmlspecialchars($_SERVER["PHP_SELF"]) . "\"";?>>
 				<div class="input required-input">
