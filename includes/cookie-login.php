@@ -3,7 +3,7 @@
     Re-establish sessions from the cookie
 -->
 <?php
-    require(config.php);
+    require_once ('includes/config.php');
     if(!isset($_SESSION['login-user']) && isset($_COOKIE['user']))
     {
         $temp = $_COOKIE['user'];
