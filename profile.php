@@ -9,6 +9,8 @@
     require_once ('includes/config.php');
     include_once ('includes/create-footer.php');
 	include_once ('includes/create-books-display.php');
+	require_once ('includes/cookie-login.php');
+
 
     if ( !isset($_SESSION['login_user']) && $_SESSION['login_admin'] == false )
     {
