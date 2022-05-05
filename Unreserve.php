@@ -35,17 +35,14 @@
 			/* Header bar at the top of the each page containing a series of links and the logo */
 			create_home_header();
 		?>
-	
-	<div class="backgroundfix4">
-		<div class="container">  
+		
+		<div class="content">
 			<div class="main">
-				<h1>Unreserved</h1>
+				<h3>Unreserved</h3>
 				<?php
-				echo "<div class='Form2'><h2>Book has been unreserved if code was correct.</h2></div>";
+				echo "<p>Book has been unreserved if code was correct.</p>";
 				?>
 			</div>
-		</div>
-	</div>
 				
 	<?php
 									
@@ -56,15 +53,15 @@
 										$db->escape_string($_POST['BookID'])));
 											
 		echo "<br>";
-		echo "<div class='Form2'><h2>Check your account if the book has been unreserved.</h2></div>";
+		echo "<p>Check your account if the book has been unreserved.<p>";
 		echo "<br>";
 		
 		echo "<div class='Form'><h3><a href='profile.php'>View your account</a> <br></h3></div>";
 		echo "<div class='Form'><h3><a href='includes/logout.php'>Want to log out?</a> <br></h3></div>";
 
 	?>
-	
-	<br><br>
+		</div>
+	</div>
 	
 	<?php
 		/* Footer at the end of the page that displays some basic website info */
