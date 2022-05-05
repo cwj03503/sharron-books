@@ -203,7 +203,9 @@
                 
                 #Book desription
                 echo "<td>";
+                echo "<p class=\"shorter-book-description\">"; 
                 echo $row['Description'];
+                echo "</p>";
                 echo "</td>";
 
                 #Contains a hidden form that will send bookID to details.php
