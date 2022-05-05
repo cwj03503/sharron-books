@@ -61,7 +61,7 @@
 				</div> <!-- Centered box -->
 
 		<p> 
-			Need to add for a new hire? <a href="login-admin-form.php" class="link"> Use this link. </a>
+			Need to add for a new hire? <a href="create-admin-account-form.php" class="link"> Use this link. </a>
 		</p>
 
 		<p> 

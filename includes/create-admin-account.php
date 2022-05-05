@@ -31,7 +31,7 @@
             $hash = password_hash( $passIn, PASSWORD_DEFAULT ); //hashing
             $sql->bind_param( "sssss", $userIn, $hash, $emailIn, $firstnameIn, $lastnameIn );
             $sql->execute();
-            header("location:login-admin-form.php");
+            header("location:../login-admin-form.php");
         } // else
     } // if
 ?>
