@@ -76,8 +76,12 @@
                 
                 #Book desription
                 echo "<td class=\"dotted\">";
-                    echo "<p class=\"book-description\">";
-                        echo $row['Description'];
+                    echo "<p class=\"book-description\" id="shortdesc">";
+                        <script src="shorter-book-description.js"> 
+                            var string = <?php echo "json_encode($row['Description'])"; ?>;
+                            var limit = 200;
+                            document.getElementById("shortdesc").innerHTML = truncate(string, limit);
+                        </script> 
                     echo "</p>";
                 echo "</td>";
                 
