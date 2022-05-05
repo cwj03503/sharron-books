@@ -46,7 +46,17 @@
          
                     header("location: ../profile-admin.php"); // redirect only temporary
                 } // if
+                else
+                {
+                    $error = "Your Login Name or Password is invalid";
+                    header( 'location:../login-admin-form.php'); 
+                }
       		} // if
+            else
+            {
+                $error = "Your Login Name or Password is invalid";
+                header( 'location:../login-admin-form.php');
+            }
         } // if
         else 
         {

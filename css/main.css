@@ -56,6 +56,7 @@ div {
 .linedUp {
 	display: flex;
 	justify-content: center;
+	align-content: space-between;
 }
 
 tr.dotted, td.dotted {
@@ -88,4 +89,14 @@ a.header-link:visited {
 
 a:hover, a:active {
 	color: red;
+}
+
+.centered-box {
+	border: 3px solid #404040;
+	border-radius: 15px;
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: space-between;
+	align-items: center;
 }

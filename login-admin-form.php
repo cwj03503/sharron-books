@@ -34,7 +34,7 @@
 		<div class="content">
 			<h3 style="text-decoration: underline;">Admin Login</h3>
 		
-			<form method="POST" action="../includes/login-admin.php">
+			<form method="POST" action="includes/login-admin.php">
 				<label><b>Username</b></label>
 				<input type="text" name="username" required>
 					
@@ -44,7 +44,8 @@
 					<button type="submit">Login</button>
 				</form>
 			</div> 
-	
+		</div>
+
 		<?php
 			/* Footer at the end of the page that displays some basic website info */
 			create_footer();

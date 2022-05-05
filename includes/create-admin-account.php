@@ -27,11 +27,11 @@
         } // if
         else // no discovered user safe to make
         {
-            $sql = $db->prepare( "INSERT INTO Administrators (Username, Password) VALUES (?,?)" );
+            $sql = $db->prepare( "INSERT INTO Administrators (Username, Password, Email, Firstname, Lastname) VALUES (?,?,?,?,?)" );
             $hash = password_hash( $passIn, PASSWORD_DEFAULT ); //hashing
             $sql->bind_param( "sssss", $userIn, $hash, $emailIn, $firstnameIn, $lastnameIn );
             $sql->execute();
-            header("location:../html/logout.html");
-            } // else
-        } // if
-    ?>
+            header("location:login-admin-form.php");
+        } // else
+    } // if
+?>

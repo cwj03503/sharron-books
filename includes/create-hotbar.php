@@ -1,6 +1,7 @@
 <?php
     /* Author - Carson Jones
-     * Generates a Sharron Books Header bar with search and session information
+     * Generates a Sharron Books Header bar with search and session information.
+     * This script doesn't inteact with the database.
      */
     function create_hotbar()
     {
@@ -8,8 +9,17 @@
 		echo "<h2>Sharron Books</h2>";
 		if ( isset($_SESSION['login_username']) )
         {
-            // user is logged in, display link to profile page 
-            echo "<a class=\"hotbar-link\" href=\"profile.php\">" . $_SESSION['login_username'] . "</a>";
+            // check login type
+            if ($_SESSION['login_admin'] == "true")
+            {
+                // user is an admin
+                echo "<a class=\"hotbar-link\" href=\"profile-admin.php\">" . $_SESSION['login_username'] . "</a>";
+            }
+            else
+            {
+                // user is a regular user
+                echo "<a class=\"hotbar-link\" href=\"profile.php\">" . $_SESSION['login_username'] . "</a>";
+            }
         } 
         else 
         {

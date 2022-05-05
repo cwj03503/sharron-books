@@ -76,8 +76,12 @@
                 
                 #Book desription
                 echo "<td class=\"dotted\">";
-                    echo "<p class=\"book-description\">";
-                        echo $row['Description'];
+                    echo "<p class=\"book-description\" id="shortdesc">";
+                        <script src="shorter-book-description.js"> 
+                            var string = <?php echo "json_encode($row['Description'])"; ?>;
+                            var limit = 200;
+                            document.getElementById("shortdesc").innerHTML = truncate(string, limit);
+                        </script> 
                     echo "</p>";
                 echo "</td>";
                 
@@ -126,9 +130,9 @@
                     $stmt = $db->prepare("SELECT UserID FROM bookreserve WHERE BookID=?");
                     $stmt->bind_param("d", $row['BookID']);
                     $stmt->execute();
-                    $result = $stmt->get_result(); 
-                    $resultCheck = $result->num_rows;
-                    echo $resultCheck;
+                    $reservedResult = $stmt->get_result(); 
+                    $numberReserved = $reservedResult->num_rows;
+                    echo $numberReserved;
                 echo "</td>";
 
                 #Admin Only Columns
