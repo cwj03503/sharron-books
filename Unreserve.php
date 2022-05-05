@@ -36,6 +36,7 @@
 			/* Header bar at the top of the each page containing a series of links and the logo */
 			create_home_header();
 		?>
+
 		
 		<div class="content">
 		<?php
@@ -65,10 +66,6 @@
 				echo "<p> The book you selected ( ID number: " . $_POST['BookID'] . " ) Has  been removed from your reservations. </p>";
 				echo "<p> Click <a href='profile.php'> here </a> to view your active reservations. </p>";
 			}
-
-									
-			
-			
 
 		?>
 		</div>

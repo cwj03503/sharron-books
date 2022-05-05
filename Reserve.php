@@ -78,7 +78,7 @@
 					{
 						// Reservation has already been made
 						echo "<h3> Book Reservation Unsuccessful </h3>";
-						echo "<p> The book you selected ( ID number: " . $_POST['bookID'] . " ) Has already been reserved by you. </p>";
+						echo "<p> The book you selected ( ID number: " . $_POST['bookID'] . " ) has already been reserved by you. </p>";
 						echo "<p> Click <a href='profile.php'> here </a> to view your active reservations. </p>";
 					}
 					else
@@ -95,7 +95,7 @@
 													));
 
 						// Display success message
-						echo "<h3> The book you selected ( ID number: " . $_POST['bookID'] . " ) was sucessfully reserved. </h3>";
+						echo "<h3> The book you selected ( ID number: " . $_POST['bookID'] . " ) was successfully reserved. </h3>";
 						echo "<p> Click <a href='profile.php'> here </a> to view your active reservations  </p>";
 					}
 					
