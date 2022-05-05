@@ -113,3 +113,11 @@ a:hover, a:active {
 	border: 3px solid #404040;
 	border-radius: 15px;
 }
+
+table tr:nth-child(even){
+	background-color: #fffff3;	
+}
+
+table tr:hover{
+	background-color: #cce6ff;
+}

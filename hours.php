@@ -53,37 +53,39 @@
 				</div>
 			<hr>
 			<h3> Regular Hours:</h3>
-			<table>
-				<tr>
-					<td>Monday</td>
-					<td>7:30 AM - 9:00 PM</td>
-				</tr>
-				<tr>
-					<td>Tuesday</td>
-					<td>7:30 AM - 9:00 PM</td>
-				</tr>
-				<tr>
-					<td>Wednesday</td>
-					<td>7:30 AM - 9:00 PM</td>
-				</tr>
-				<tr>
-					<td>Thursday</td>
-					<td>7:30 AM - 9:00 PM</td>
-				</tr>
-				<tr>
-					<td>Friday</td>
-					<td>7:30 AM - 5:00 PM</td>
-				</tr>
-				<tr>
-					<td>Saturday</td>
-					<td>12:00 PM - 9:00 PM</td>
-				</tr>
-				<tr>
-					<td>Sunday</td>
-					<td>CLOSED</td>
-				</tr>
-				
-			</table>
+			<div class="centered-box">
+				<table>
+					<tr>
+						<td>Monday</td>
+						<td>7:30 AM - 9:00 PM</td>
+					</tr>
+					<tr>
+						<td>Tuesday</td>
+						<td>7:30 AM - 9:00 PM</td>
+					</tr>
+					<tr>
+						<td>Wednesday</td>
+						<td>7:30 AM - 9:00 PM</td>
+					</tr>
+					<tr>
+						<td>Thursday</td>
+						<td>7:30 AM - 9:00 PM</td>
+					</tr>
+					<tr>
+						<td>Friday</td>
+						<td>7:30 AM - 5:00 PM</td>
+					</tr>
+					<tr>
+						<td>Saturday</td>
+						<td>12:00 PM - 9:00 PM</td>
+					</tr>
+					<tr>
+						<td>Sunday</td>
+						<td>CLOSED</td>
+					</tr>
+					
+				</table>
+			</div>
 			
 			<p> 
 				Library may be closed on holidays. Please call us at <b>(706) 542-3251</b> for our holiday hours.
