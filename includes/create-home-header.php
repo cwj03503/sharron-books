@@ -2,7 +2,7 @@
     function create_home_header()
     {
         echo "<div class=\"home-header\">"; 
-        echo "<img src=\"logo\" alt=\"Library Logo\">";
+        echo "<img src=\"images/logo.png\" alt=\"Library Logo\">";
         echo "<br>";
         echo "<header>";
             echo "<nav>";
