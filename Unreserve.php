@@ -38,9 +38,9 @@
 		
 		<div class="content">
 			<div class="main">
-				<h3>Unreserved</h3>
+				<h1>Unreserved</h1>
 				<?php
-				echo "<p>Book has been unreserved if code was correct.</p>";
+				echo "<p>Check your account to see if the book has been unreserved.<p>";
 				?>
 			</div>
 				
@@ -53,7 +53,7 @@
 										$db->escape_string($_POST['BookID'])));
 											
 		echo "<br>";
-		echo "<p>Check your account if the book has been unreserved.<p>";
+		echo "<p>If the Book ID matches, then the book has been unreserved otherwise the Book ID is wrong.</p>";
 		echo "<br>";
 		
 		echo "<div class='Form'><h3><a href='profile.php'>View your account</a> <br></h3></div>";
