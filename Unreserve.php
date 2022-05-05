@@ -55,7 +55,7 @@
 			{
 				// Reservation has already been made
 				echo "<h3> Reservation removal unsuccessful </h3>";
-				echo "<p> The book you selected ( ID number: " . $_POST['BookID'] . " ) Has not been reserved by you. </p>";
+				echo "<p> The book you selected ( ID number: " . $_POST['BookID'] . " ) has not been reserved by you. </p>";
 				echo "<p> Click <a href='profile.php'> here </a> to view your active reservations. </p>";
 			}
 			else
@@ -63,7 +63,7 @@
 				// Reservation can be completed
 				$Query = $db->Query(sprintf("DELETE FROM bookreserve WHERE (BookId,UserID)=('%s','%s');", $_POST['BookID'], $_SESSION['login_user']));
 				echo "<h3> Reservation removal successful </h3>";
-				echo "<p> The book you selected ( ID number: " . $_POST['BookID'] . " ) Has  been removed from your reservations. </p>";
+				echo "<p> The book you selected ( ID number: " . $_POST['BookID'] . " ) has  been removed from your reservations. </p>";
 				echo "<p> Click <a href='profile.php'> here </a> to view your active reservations. </p>";
 			}
 
