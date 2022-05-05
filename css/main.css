@@ -100,3 +100,9 @@ a:hover, a:active {
 	align-content: space-between;
 	align-items: center;
 }
+
+.alert {
+	color:red;
+	border: 3px solid #404040;
+	border-radius: 15px;
+}

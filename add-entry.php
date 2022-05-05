@@ -57,7 +57,7 @@
                 $sql = $db->prepare( "INSERT INTO books ( Title, Author, Publisher, Genre, YearPubbed, Description, BookID, ImageLocation ) VALUES ( ?,?,?,?,?,?,?,? )" );
                 $sql->bind_param( "ssssisds", $title, $author, $publisher, $genre, $yearPubbed, $description, $bookID, $imageLocation );
                 $sql->execute();
-                echo "<b class=\"success-message\"> Entry successfully added with ID " . $bookID . ".</b>"; 
+                echo "<b class=\"alert\"> Entry successfully added with ID " . $bookID . ".</b>"; 
             } // else
         }
     ?>

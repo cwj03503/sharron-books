@@ -105,15 +105,15 @@
 				if ($_SERVER["REQUEST_METHOD"] == "POST")
 				{
 					# Handle deletion
-					if (isset($_POST["delete"]))
+					if (isset($_POST["delete"]) && isset($_POST["BookID"]))
 					{
-						if (delete_book($_POST("BookID")) == True)
+						if (delete_book($db, $_POST["BookID"]) == True)
 						{
-							echo "<p class=\"alert\" Entry successfully removed from database. <\p> <br>";
+							echo "<h3 class=\"alert\"> Entry (ID: " . $_POST["BookID"] . ") successfully removed from database. </h3> <br>";
 						}
 						else
 						{
-							echo "<p class=\"alert error\" Failed to remove entry from database. <\p> <br>";
+							echo "<h3 class=\"alert\"> Failed to remove entry from database. </h3> <br>";
 						}
 					}
 

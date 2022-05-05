@@ -137,7 +137,8 @@
                     # Delete book button
                     echo "<td class=\"dotted\">";
                     echo "<form action=\"" . htmlspecialchars($_SERVER["PHP_SELF"]) . "\" method=\"POST\">";
-                    echo "<input type=\"hidden\" name=\"bookID\" value=\"" . $row['BookID'] . "\">";
+                    echo "<input type=\"hidden\" name=\"BookID\" value=\"" . $row['BookID'] . "\">";
+                    echo "<input type=\"hidden\" name=\"delete\" value=\"delete\">";
                     echo "<input type=\"submit\" value=\"delete\" name=\"delete\">";
                     echo "</form>";
                     echo "</td>";
