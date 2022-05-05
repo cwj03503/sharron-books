@@ -40,6 +40,14 @@
 		<div class="content">
 		<?php
 
+			// check if user is logged in
+			if(!isset($_SESSION['login_user'])) 
+			{
+				echo  "<h2> You must be logged in to view this page </h2>";
+				echo "<p> Log in <a href=\"login-form.php\"> here </a>.";
+				exit;
+			} // if
+
 			// check if book exists
 			$reservationCheckQuery = $db->Query(sprintf("SELECT * FROM bookreserve WHERE BookID='%s' HAVING UserID='%s'", $_POST['BookID'], $_SESSION['login_user']));
 			if ($reservationCheckQuery->num_rows < 1)
