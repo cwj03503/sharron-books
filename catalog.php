@@ -55,19 +55,20 @@
 
 				<!-- Genre Selection -->
 				<label for="genres"> Genres: </label>
-				<select name="genres\" class="genres-dropdown">"
+				<select name="genres" class="genres-dropdown">"
 				<option autofocus selected value="All">All</option>"
 				<?php
 					/* The options in this selection menu are read from the "Genre" column of 
 					* the library database */
-					$sql = "SELECT * FROM books;";
+					$sql = "SELECT DISTINCT Genre FROM books;";
 					$result = mysqli_query($db, $sql);
 					$resultCheck = mysqli_num_rows($result); 
 					if ($resultCheck > 0) // check if there are results from query
 					{
-						while ($genre = mysqli_fetch_column($result,3))
+						while ($row = mysqli_fetch_assoc($result))
 						{
-							echo "<option value=\"" . $genre . "\">" . $genre . "</option>";
+							echo $row;
+							echo "<option value=\"" . $row['Genre'] . "\">" . $row['Genre'] . "</option>";
 						}
 					}
 				?>
@@ -124,7 +125,7 @@
 						$search = sanitize_input($_POST["search"]);
 					if (isset($_POST["sort-by"]))
 						$sortBy = sanitize_input($_POST["sort-by"]);
-					
+		
 					# something has been entered in the search form text box 
 					if ($search != "")
 					{
@@ -136,6 +137,7 @@
 					{
 						$sqlGenreCondition = " HAVING Genre='" . $genreSearch . "'";
 					}
+					
 				}
 
 				# set Sorting condition
