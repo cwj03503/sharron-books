@@ -113,6 +113,11 @@
 			</div> <!-- Centered box --> 
 
 			<p> 
+				<a href="password-reset.php" class="link"> Click here to reset password. </a>
+			</p>
+			<br>
+
+			<p> 
 			<a href="includes/logout.php" class="link"> Click here to log out </a>
 			</p>
 

@@ -47,11 +47,6 @@
 			</form>
 
 			<p> 
-				Need to reset password? <a href="includes/update-later.php" class="link"> Click here </a>
-			</p>
-			<br>
-
-			<p> 
 				Don't have an account? <a href="create-user-account-form.php" class="link"> Create one. </a>
 			</p>
 			<br> <br> <br> <br> <br>
